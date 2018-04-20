@@ -14,3 +14,47 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*
+
+
+Diaa Section 
+
+
+
+
+
+
+
+*/
+/*
+
+
+Mai Section 
+
+
+
+
+
+
+*/
+/*
+
+
+Deena Section 
+
+
+
+
+
+
+
+*/
+/*
+
+
+Aya Section 
+
+
+
+*/
