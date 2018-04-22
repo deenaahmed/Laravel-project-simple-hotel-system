@@ -147,6 +147,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Alfa6661\AutoNumber\AutoNumberServiceProvider::class,
         
         /*
          * Package Service Providers...

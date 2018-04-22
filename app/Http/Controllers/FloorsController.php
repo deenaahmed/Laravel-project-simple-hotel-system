@@ -15,9 +15,24 @@ class FloorsController extends Controller
   // $floors=datatables(Floor::all())->toJson();
     $floors=Floor::all();
  //   return $floors;
+ $order = Floor::create([
+  'name' => 'Aya',
+  'createdby' => 'sas2',
+]);
+/*
   return view ('floors.index',[
         'floors' =>  $floors,
   ]);
-
+*/
+$floors=Floor::all();
+   return $floors;
 }
+
+public function store(){
+  $floor = Floor::create([
+    'name' => 'Aya',
+    'createdby' => 'sas2',
+  ]);
+}
+
 }
