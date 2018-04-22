@@ -18,7 +18,7 @@ class CreateReservationsTable extends Migration
             $table->integer('clientid'); //foreign key for the client table 
             $table->integer('roomnumber'); //foreignkey for the room table
             $table->integer('status'); //0:binding 1:approved 
-            $table->integer('clientpaidprice');
+            $table->integer('clientpaidprice')->nullable();  // ichange here 
             $table->timestamps();
         });
     }
