@@ -11,21 +11,9 @@
 |
 */
 
-use App\User;
-use App\Room;
-
-Route::get('/', function () {
-
-
-    return view('client.index');
-
-});
-
-Route::get('/home', function () {
-
-    return view('home');
-});
-
+Route::get('/' , 'clients\ClientReservationController@index');
+Route::resource('/reservations/rooms', 'clients\ClientReservationController')->except([
+    'index']);
 
 
 
