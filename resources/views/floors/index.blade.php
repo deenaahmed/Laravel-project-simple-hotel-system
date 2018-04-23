@@ -1,6 +1,17 @@
 @extends('layouts.master')
 
 @section('content')
+
+
+@if ($errors != '')
+<div class="alert alert-danger">
+        <ul>
+                <li>{{ $errors }}</li>
+        </ul>
+    </div>
+    @endif
+
+
 <br>
 <br>
    <button type="button" class="btn btn-success" onclick="window.location.href='floors/create'" >Create Floor</button>

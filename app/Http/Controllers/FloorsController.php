@@ -12,7 +12,9 @@ use App\User;
 class FloorsController extends Controller
 {
   public function index(){
-    return view('floors.index');
+    return view('floors.index',[
+      'errors' => '',
+    ]);
   }
 
 public function getdatatable(){
@@ -43,9 +45,9 @@ public function store(StoreFloorRequest $request){
   }
 
 public function edit($id){
-      $floor=Floor::find($id);
-      $users=User::all();
-      return view('floors.edit',[
+  $floor=Floor::find($id);
+  $users=User::all();
+   return view('floors.edit',[
         'users'=> $users,
         'floor'=> $floor,
       ]);
@@ -59,6 +61,14 @@ public function update(StoreFloorRequest $request){
  } 
  
 public function delete($id){
+  $rooms=Room::all();
+  $rooms_in_floor=$rooms->where('floor_id',$id);
+  if (sizeof($rooms_in_floor)!=0)
+  {
+    return view('floors.index',[
+      'errors' => "This Floor Has Room You Can't Delete it"
+    ]);
+  }
   Floor::destroy($id);
   return redirect('floors');
   }       

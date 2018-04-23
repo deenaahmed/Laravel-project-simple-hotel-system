@@ -13,8 +13,11 @@ class RoomsController extends Controller
 {
 public function index(){
     //$rooms =Room::with('floor','user')->get();
-    return view('rooms.index');
+    //return view('rooms.index');
     //return $rooms; 
+    return view('rooms.index',[
+      'errors' => '',
+    ]);
 }
 
 public function getdatatable(){
@@ -73,6 +76,12 @@ return redirect('rooms');
 
   }
   public function delete($id){
+    $room=Room::find($id);
+    if ($room->isavailable=="yes"){
+      return view('rooms.index',[
+        'errors' => "Cant delete,this room is reserved"
+      ]);
+    }
     Room::destroy($id);
     return redirect('rooms');
     }     
