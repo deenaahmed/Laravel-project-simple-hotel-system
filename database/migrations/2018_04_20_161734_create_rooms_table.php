@@ -19,7 +19,9 @@ class CreateRoomsTable extends Migration
             $table->integer('capacity');
             $table->string('createdby'); ///foriegn key to the manager table 
             $table->integer('floorid'); // foreign key to the floor table 
-            $table->string('isavailable'); //true or false 
+            $table->string('isavailable'); //true or false
+            $table->integer('price'); // add from diaa branch
+            $table->string('image'); //from diaa branch
             $table->timestamps();
         });
     }

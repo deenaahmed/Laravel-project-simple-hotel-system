@@ -11,22 +11,34 @@
 |
 */
 
+use App\User;
+use App\Room;
+
 Route::get('/', function () {
+
+
     return view('welcome');
+
 });
 
-/*
+Route::get('/home', function () {
 
-
-Diaa Section 
-
-
+});
 
 
 
 
 
-*/
+
+
+
+
+
+
+
+
+
+
 /*
 
 
