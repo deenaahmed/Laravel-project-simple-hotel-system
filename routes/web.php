@@ -16,14 +16,14 @@ Route::get('/', function () {
 });
 Route::get(
     'managers',
-    'ManagerController@index'
+    'ManagersController@index'
 )->name('managers.index');
 Route::get('admin', function () {
     return view('admin.admin_template');
 });
-Route::get('managers/create','ManagerController@create');
-Route::post('managers','ManagerController@store');
-Route::get('managers/{id}/edit','ManagerController@edit');
-Route::put('managers/{id}','ManagerController@update');
-Route::get('managers/{id}','ManagerController@show');
-Route::delete('managers/{id}','ManagerController@destroy');
+Route::get('managers/create','ManagersController@create');
+Route::post('managers','ManagersController@store');
+Route::get('managers/{id}/edit','ManagersController@edit');
+Route::put('managers/{id}','ManagersController@update');
+Route::get('managers/{id}','ManagersController@show');
+Route::delete('managers/{id}','ManagersController@destroy');
