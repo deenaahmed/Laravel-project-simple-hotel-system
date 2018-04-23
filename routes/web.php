@@ -17,12 +17,13 @@ use App\Room;
 Route::get('/', function () {
 
 
-    return view('welcome');
+    return view('client.index');
 
 });
 
 Route::get('/home', function () {
 
+    return view('home');
 });
 
 
