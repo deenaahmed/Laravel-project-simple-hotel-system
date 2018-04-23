@@ -23,7 +23,10 @@ class CreateUsersTable extends Migration
             $table->string('gender')->nullable(); /// male or female 
             $table->string('nationalid')->nullable(); 
             $table->string('avatarimage')->nullable();
-            $table->integer('type'); //admin,manager,receptionist,client
+            $table->integer('type')->nullable();  //admin,manager,receptionist,client
+            $table->integer('is_approved')->nullable();;// 0 or 1 
+            $table->integer('approved_by')->nullable();;
+            // receptionist id 
             $table->rememberToken();
             $table->timestamps();
         });

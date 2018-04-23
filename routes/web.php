@@ -14,6 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('receptionist','UsersController@home');
+
+Route::get('receptionist/manage','UsersController@manageClients');
+
+Route::get('receptionist/approved','UsersController@approvedClients');
+
+Route::get('receptionist/reservations','UsersController@reservations');
+
+Route::get('receptionist/{id}/approve','UsersController@approve');
+
+
+Route::get('receptionist/{id}/delete','UsersController@delete');
 
 /*
 
@@ -58,3 +70,7 @@ Aya Section
 
 
 */
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

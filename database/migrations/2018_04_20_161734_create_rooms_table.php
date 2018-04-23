@@ -16,6 +16,7 @@ class CreateRoomsTable extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('number');
+            $table->integer('price');
             $table->integer('capacity');
             $table->string('createdby'); ///foriegn key to the manager table 
             $table->integer('floorid'); // foreign key to the floor table 
