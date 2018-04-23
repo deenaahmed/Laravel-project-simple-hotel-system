@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "337691b952d528ef713dcb2fad1cc0a0",
+    "content-hash": "b5c758f51e0fd84cf53ec3b9ddbd135e",
     "packages": [
         {
             "name": "alfa6661/laravel-autonumber",

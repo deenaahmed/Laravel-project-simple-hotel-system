@@ -12,20 +12,7 @@ use App\User;
 class FloorsController extends Controller
 {
   public function index(){
-  // $floors=datatables(Floor::all())->toJson();
-    $floors=Floor::all();
- //   return $floors;
- $order = Floor::create([
-  'name' => 'Aya',
-  'createdby' => 'sas2',
-]);
-/*
-  return view ('floors.index',[
-        'floors' =>  $floors,
-  ]);
-*/
-$floors=Floor::all();
-   return $floors;
+    return view('floors.index');
 }
 
 public function store(){
@@ -34,5 +21,7 @@ public function store(){
     'createdby' => 'sas2',
   ]);
 }
-
+public function getdatatable(){
+  return datatables()->of(Floor::query())->toJson();
+}
 }

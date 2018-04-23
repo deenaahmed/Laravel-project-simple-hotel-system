@@ -25,8 +25,8 @@ class Floor extends Model
     {
         return [
             'number' => [
-                'format' => '?', // autonumber format. '?' will be replaced with the generated number.
-                'length' => 4 // The number of digits in an autonumber
+                'format' => '1?', // autonumber format. '?' will be replaced with the generated number.
+                'length' => 3 // The number of digits in an autonumber
             ]
         ];
     }

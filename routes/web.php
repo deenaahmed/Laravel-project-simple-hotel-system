@@ -56,5 +56,8 @@ Deena Section
 Aya Section 
 */
 Route::get('floors','FloorsController@index');
+Route::get('test','FloorsController@test');
+Route::get('test/getdatatable','FloorsController@getdatatable');
+
 
 
