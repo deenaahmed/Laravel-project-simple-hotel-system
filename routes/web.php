@@ -61,6 +61,6 @@ Route::get('floors/create','FloorsController@create');
 Route::post('floors','FloorsController@store');
 Route::get('floors/{id}/edit','FloorsController@edit');
 Route::patch('floors/{id}','FloorsController@update');
-
+Route::delete('floors/{id}', 'FloorsController@delete');
 
 

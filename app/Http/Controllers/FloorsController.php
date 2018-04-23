@@ -20,11 +20,10 @@ public function getdatatable(){
   return datatables()->of($floors)
   ->addColumn('action', function ($data) {
     return "<a class='btn btn-xs btn-primary' href='/floors/$data->id/edit'>Edit</a> 
-    <a class='btn btn-xs btn-danger' href='/floors/$data->id'>Delete</a>
+    <a class='btn btn-xs btn-danger delete ' csrf_token() id='delete' post='$data->id' href='/floors/$data->id'>Delete </a>
     ";
-})
-
-      ->make(true);
+    })
+    ->make(true);
  }
 
 public function create(){
@@ -50,12 +49,16 @@ public function edit($id){
         'floor'=> $floor,
       ]);
   }
-    public function update(StoreFloorRequest $request){
-      Floor::where('id',$request->id)->update([
-          'name'=> $request->name,
-         'createdby'=> $request->user,     
-      ]);
-   return redirect('floors');
-    }     
-     
+public function update(StoreFloorRequest $request){
+  Floor::where('id',$request->id)->update([
+    'name'=> $request->name,
+    'createdby'=> $request->user,     
+  ]);
+  return redirect('floors');
+ } 
+ 
+public function delete($id){
+  Floor::destroy($id);
+  return redirect('floors');
+  }       
 }

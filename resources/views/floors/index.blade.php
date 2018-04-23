@@ -15,7 +15,7 @@
     <td>Name </td>
     <td> created_at </td>
     <td> updated_at </td>
-    <td> Actions </td>
+    <td id="actions"> Actions  </td>
     </tr>
 </thead>
 </table>
@@ -25,8 +25,8 @@
         $('#users-table').DataTable({
            processing: true,
            serverSide: true,
-    
             ajax: 'http://localhost:8000/floors/getdatatable' ,
+            data : {'_token' : '{{csrf_token()}}'},
             columns: [
             {data: 'id'},
             {data: 'number'},
@@ -38,4 +38,25 @@
         });
     });
 </script>
+
+<script>
+$( document ).ready(function(){
+$(document).on("click", ".delete", function() {
+console.log("/floors/"+$(this).attr('post'))
+var line=$(this).parent().parent()
+ if (confirm("Sure to delete?")) {
+   $.ajax({
+       url: "/floors/"+$(this).attr('post'),
+        type: 'DELETE',
+        data : {'_token' : '{{csrf_token()}}'},
+            success: function(result){
+                line.remove();
+            },
+            error: function(err){
+                console.log(err);
+            }
+    });
+  }
+});
+}); </script>
  @endsection
