@@ -26,10 +26,13 @@ Route::get('receptionist/{id}/approve','UsersController@approve');
 
 
 Route::get('receptionist/{id}/delete','UsersController@delete');
+//*********************************Admin*****
 
 Route::get('admin/clients','UsersController@showClients');
 
+Route::get('admin/clients/{id}/edit','UsersController@editClient');
 
+Route::get('admin/clients/{id}/delete','UsersController@deleteClient');
 
 /*
 

@@ -60,16 +60,17 @@ class UsersController extends Controller
     	return view('admin.showClients',['users' => $users]);
 
     }
-    public function addUser(){
+    public function addclient(){
 
     }
-    public function editUser($id){
-
+    public function editclient($id){
+    	$user = User::find($id);
+    	return view('admin.updateClient',['user' => $user]);
 
     }
-    public function deleteUser($id){
+    public function deleteclient($id){
     	User::find($id)->delete();
-    	return redirect(''); // admin hom
+    	return redirect('/admin/clients'); // admin hom
 
     }
 }
