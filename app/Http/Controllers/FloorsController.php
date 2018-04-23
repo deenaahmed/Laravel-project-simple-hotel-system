@@ -13,13 +13,10 @@ class FloorsController extends Controller
 {
   public function index(){
     return view('floors.index');
- //  $floors = Floor::with('user')->get();
-   // return $floors;
   }
 
 public function getdatatable(){
   header("Access-Control-Allow-Origin: *");
-  //$floors = Floor::select(['id', 'name','user_id', 'number','createdby', 'created_at', 'updated_at']);
   $floors = Floor::with('user')->get();
   return datatables()->of($floors)
   ->addColumn('action', function ($data) {
