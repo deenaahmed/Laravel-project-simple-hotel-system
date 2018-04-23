@@ -1,13 +1,10 @@
-<html>
-<head>
+@extends('layouts.master')
 
-<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">  
+@section('content')
+
+   <button type="button" class="btn btn-success" onclick="window.location.href='floors/create'" >Create Post</button>
 
 
-</head>
-<body>
 <table id="users-table" class="table">
 <thead>
     <tr>
@@ -20,13 +17,13 @@
 </thead>
 </table>
 
-
 <script>
     $(function() {
         $('#users-table').DataTable({
            processing: true,
-          serverSide: true,
-            ajax: 'http://localhost:8000/test/getdatatable' ,
+           serverSide: true,
+    
+            ajax: 'http://localhost:8000/floors/getdatatable' ,
             columns: [
             {data: 'id'},
             {data: 'number'},
@@ -38,5 +35,4 @@
     });
 </script>
 
-</body>
-</html>
+ @endsection

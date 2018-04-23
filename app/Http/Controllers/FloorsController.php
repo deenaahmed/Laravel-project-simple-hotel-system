@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 use App;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Facades\Datatables;
+use App\Http\Requests\StoreFloorRequest;
 use App\Room;
 use App\Floor;
 use App\User;
-
 
 class FloorsController extends Controller
 {
@@ -15,13 +15,40 @@ class FloorsController extends Controller
     return view('floors.index');
 }
 
-public function store(){
-  $floor = Floor::create([
-    'name' => 'Aya',
-    'createdby' => 'sas2',
-  ]);
-}
 public function getdatatable(){
+  header("Access-Control-Allow-Origin: *");
   return datatables()->of(Floor::query())->toJson();
-}
+  }
+
+public function create(){
+    $users=User::all();
+    return view('floors.create',[
+        'users'=>$users
+    ]);
+  }
+
+  public function store(StoreFloorRequest $request){
+    $floor = Floor::create([
+      'name' => $request->name,
+      'createdby' =>$request->user,
+    ]);
+    return redirect('floors');
+     }
+
+public function edit($id){
+      $floor=Floor::find($id);
+      $users=User::all();
+      return view('floors.edit',[
+        'users'=> $users,
+        'floor'=> $floor,
+      ]);
+  }
+    public function update(StoreFloorRequest $request){
+      Floor::where('id',$request->id)->update([
+          'name'=> $request->name,
+         'createdby'=> $request->user,     
+      ]);
+   return redirect('floors');
+    }     
+     
 }
