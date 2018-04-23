@@ -1,10 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
-
+<br>
+<br>
    <button type="button" class="btn btn-success" onclick="window.location.href='floors/create'" >Create Post</button>
 
-
+<br>
+<br>
 <table id="users-table" class="table">
 <thead>
     <tr>
@@ -13,6 +15,7 @@
     <td>Name </td>
     <td> created_at </td>
     <td> updated_at </td>
+    <td> Actions </td>
     </tr>
 </thead>
 </table>
@@ -29,10 +32,10 @@
             {data: 'number'},
             {data: 'name'},
             {data: 'created_at'},
-            {data: 'updated_at'}
+            {data: 'updated_at'},    
+            {data: 'action', name: 'action', orderable: false, searchable: false}          
         ]
         });
     });
 </script>
-
  @endsection
