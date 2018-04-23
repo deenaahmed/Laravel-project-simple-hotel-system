@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
-
 use Illuminate\Http\Request;
 use App\Reservation;
 use App\User;
 use Auth;
+
 class UsersController extends Controller
-{
+{// receptionist 
     public function home(){
     	return view('receptionist.home');
     }
@@ -53,5 +52,24 @@ class UsersController extends Controller
     public function delete($id){
     	User::find($id)->delete();
     	 return redirect('/receptionist/manage');
+    }
+    //***********************************
+    //Admin 
+    public function showClients(){
+    	$users = User::all();
+    	return view('admin.showClients',['users' => $users]);
+
+    }
+    public function addUser(){
+
+    }
+    public function editUser($id){
+
+
+    }
+    public function deleteUser($id){
+    	User::find($id)->delete();
+    	return redirect(''); // admin hom
+
     }
 }

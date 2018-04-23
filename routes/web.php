@@ -27,6 +27,10 @@ Route::get('receptionist/{id}/approve','UsersController@approve');
 
 Route::get('receptionist/{id}/delete','UsersController@delete');
 
+Route::get('admin/clients','UsersController@showClients');
+
+
+
 /*
 
 
