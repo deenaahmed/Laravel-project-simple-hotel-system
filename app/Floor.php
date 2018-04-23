@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+
 use Illuminate\Database\Eloquent\Model;
 use Alfa6661\AutoNumber\AutoNumberTrait;
 
@@ -10,9 +11,11 @@ class Floor extends Model
     
     use AutoNumberTrait;
     protected $fillable=[
-        'name','createdby'
+        'name','user_id'
     ];
-
+    public function user() {
+        return $this ->belongsTo(User::class);
+    }
    
     public function rooms(){
         return $this->hasMany(Room::class);

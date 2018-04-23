@@ -4,6 +4,7 @@ use App;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Facades\Datatables;
 use App\Http\Requests\StoreFloorRequest;
+use Illuminate\Database\Eloquent\Model;
 use App\Room;
 use App\Floor;
 use App\User;
@@ -12,11 +13,14 @@ class FloorsController extends Controller
 {
   public function index(){
     return view('floors.index');
-}
+ //  $floors = Floor::with('user')->get();
+   // return $floors;
+  }
 
 public function getdatatable(){
   header("Access-Control-Allow-Origin: *");
-  $floors = Floor::select(['id', 'name', 'number','createdby', 'created_at', 'updated_at']);
+  //$floors = Floor::select(['id', 'name','user_id', 'number','createdby', 'created_at', 'updated_at']);
+  $floors = Floor::with('user')->get();
   return datatables()->of($floors)
   ->addColumn('action', function ($data) {
     return "<a class='btn btn-xs btn-primary' href='/floors/$data->id/edit'>Edit</a> 
@@ -36,7 +40,7 @@ public function create(){
 public function store(StoreFloorRequest $request){
   $floor = Floor::create([
     'name' => $request->name,
-    'createdby' =>$request->user,
+    'user_id' =>$request->user,
   ]);
   return redirect('floors');
   }
@@ -52,7 +56,7 @@ public function edit($id){
 public function update(StoreFloorRequest $request){
   Floor::where('id',$request->id)->update([
     'name'=> $request->name,
-    'createdby'=> $request->user,     
+    'user_id'=> $request->user,     
   ]);
   return redirect('floors');
  } 

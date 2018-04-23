@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Addfloorname extends Migration
+class RenameUserIdInFloors extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class Addfloorname extends Migration
      */
     public function up()
     {
-        Schema::table('floors', function (Blueprint $table) {
-            $table->string('name');
-
+        Schema::table('floors', function(Blueprint $table)
+        {
+            $table->renameColumn('createdby','user_id');
         });
     }
+    
 
     /**
      * Reverse the migrations.

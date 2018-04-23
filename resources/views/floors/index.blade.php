@@ -15,6 +15,7 @@
     <td>Name </td>
     <td> created_at </td>
     <td> updated_at </td>
+    <td> Manger  </td>
     <td id="actions"> Actions  </td>
     </tr>
 </thead>
@@ -32,7 +33,8 @@
             {data: 'number'},
             {data: 'name'},
             {data: 'created_at'},
-            {data: 'updated_at'},    
+            {data: 'updated_at'},  
+            {data: 'user.name'},  
             {data: 'action', name: 'action', orderable: false, searchable: false}          
         ]
         });
