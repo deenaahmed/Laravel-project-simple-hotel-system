@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/item',function (){
+
+});
+
 Route::get('/' , 'clients\ClientReservationController@index');
 Route::resource('/reservations/rooms', 'clients\ClientReservationController')->except([
     'index']);

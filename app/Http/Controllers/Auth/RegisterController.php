@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'gender' => $data['gender'],//added diaa branch
-            'country' => $data['country'],
+            'country' => $data['country'],//added diaa branch
             'password' => Hash::make($data['password']),
         ]);
 

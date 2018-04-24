@@ -23,7 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('gender')->nullable(); /// male or female 
             $table->string('nationalid')->nullable(); 
             $table->string('avatarimage')->nullable();
-            $table->integer('type')->nullable();; //admin,manager,receptionist,client //aded from diaa branch
+            $table->integer('is_approved')->default(0);
+
             $table->rememberToken();
             $table->timestamps();
         });
