@@ -1,14 +1,18 @@
 <?php
 
 namespace App;
+use Spatie\Permission\Traits\HasRoles;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Room ;
-
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasRoles;
+
 
     /**
      * The attributes that are mass assignable.
