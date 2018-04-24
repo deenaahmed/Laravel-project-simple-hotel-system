@@ -1,13 +1,18 @@
 <?php
 
 namespace App;
+use Spatie\Permission\Traits\HasRoles;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Room ;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasRoles;
+
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +20,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','is_approved','approved_by'
+
+        'name', 'email', 'password','gender','country' , 'avatarimage', 'national_id','is_approved','approved_by','mobile'
+
     ];
 
     /**
@@ -26,4 +33,25 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+
+
+    // relation many to many
+
+    public function rooms()
+    {
+        return $this->belongsToMany(Room::class,'reservations')->withPivot('user_id', 'room_id','clientpaidprice');
+
+    }
+
+
+
+
+
+
+
+
+
+
 }
