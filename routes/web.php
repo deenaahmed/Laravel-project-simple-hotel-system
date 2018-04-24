@@ -17,17 +17,6 @@ Route::resource('/reservations/rooms', 'clients\ClientReservationController')->e
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 /*
 
 

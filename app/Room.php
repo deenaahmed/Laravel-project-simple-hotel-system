@@ -21,6 +21,10 @@ class Room extends Model
     }
 
 
+    public function getPriceAttribute($value)
+    {
+        return ($value/100);
+    }
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\clients;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Room ;
 
 class ClientReservationController extends Controller
 {
@@ -23,8 +24,8 @@ class ClientReservationController extends Controller
     public function index()
     {
         //
-
-        return view('client.index');
+        $rooms=Room::where('isavailable','true')->get();
+        return view('client.index',compact('rooms'));
     }
 
     /**
