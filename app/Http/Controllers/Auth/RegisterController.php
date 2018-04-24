@@ -85,12 +85,26 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
 
-        $request->file('image')->store('public/clients/images');
-        // save image name in data base
-        $name=$request->file('image')->hashName();
-        $user->avatarimage = $name;
+
+
+        if($request->file('image')) {
+
+            $request->file('image')->store('public/clients/images');
+            // save image name in data base
+            $name = $request->file('image')->hashName();
+            $user->avatarimage = $name;
+
+
+        }
+
+        else
+        {
+            $user['avatarimage']='user-default.png';
+
+        }
         // set role client
         $user->assignRole('client');
+
         $user->save();
 
     }

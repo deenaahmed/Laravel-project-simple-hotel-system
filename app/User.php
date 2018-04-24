@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function rooms()
     {
-        return $this->belongsToMany(Room::class,'reservations')->withPivot('user_id', 'room_id','status','clientpaidprice');
+        return $this->belongsToMany(Room::class,'reservations')->withPivot('user_id', 'room_id','clientpaidprice');
 
     }
 
