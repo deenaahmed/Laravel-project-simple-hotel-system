@@ -118,26 +118,6 @@ trait AuthenticatesUsers
     {
         //
 
-
-        if ($user->is_approved == 0) {
-
-            $message = 'Your account is still pending !!';
-
-            // Log the user out.
-            $this->logout($request);
-
-            // Return them to the log in form.
-            return redirect()->back()
-                ->withInput($request->only($this->username(), 'remember'))
-                ->withErrors([
-                    // This is where we are providing the error message.
-                    $this->username() => $message,
-                ]);
-        }
-
-
-
-
     }
 
     /**

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -78,5 +79,19 @@ class RegisterController extends Controller
     return $user ;
 
         
+    }
+
+
+    protected function registered(Request $request, $user)
+    {
+
+        $request->file('image')->store('public/clients/images');
+        // save image name in data base
+        $name=$request->file('image')->hashName();
+        $user->avatarimage = $name;
+        // set role client
+        $user->assignRole('client');
+        $user->save();
+
     }
 }
