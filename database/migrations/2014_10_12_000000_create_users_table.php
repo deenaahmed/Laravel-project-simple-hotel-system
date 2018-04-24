@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('mobile')->nullable();
             $table->string('country')->nullable();
             $table->string('gender')->nullable(); /// male or female 
+
             $table->string('national_id')->nullable();  //national_id
             $table->string('avatar_image')->nullable(); //avatar_image
             $table->integer('is_approved')->default(0);
@@ -28,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->integer('creator')->nullable();
                                                                 //creator integer
                                                                 //
+
 
 
 

@@ -1,7 +1,9 @@
+
 @extends('layouts.clientmaster')
 @section('content')
 
     <div class="container"  style="margin-top: 50px ; margin-bottom: 257px">
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
