@@ -341,8 +341,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li><a href="/managers"><i class="fa fa-circle-o"></i> Manage Managers</a></li>
+            <li><a href="/receptionists"><i class="fa fa-circle-o"></i> Manage Receptionists</a></li>
+            <li><a href="/clients"><i class="fa fa-circle-o"></i> Manage Clients</a></li>
           </ul>
         </li>
         <li class="treeview">
