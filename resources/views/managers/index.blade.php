@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.admin_template')
 @section('content')
 <button type="button" class="btn btn-success"  onclick="location.href = '/managers/create';">Add a new Maneger </button>
 <table class="table">
@@ -23,6 +23,7 @@
 <td>{{ $manager->name}}</td>
 <td> {{$manager->email}}</td> 
 <td> {{$manager->national_id}}</td> 
+<td> {{$manager->creator}}</td> 
  <td>{{ \Carbon\Carbon::parse($manager->createdat)->format('d/m/Y')}}</td> 
 <td><button type="button" class="btn btn-info" onclick="location.href = '/managers/{{$manager->id}}';">View</button></td>
  <td><button type="button" class="btn btn-primary" onclick="location.href = '/managers/{{$manager->id}}/edit';">Edit</button></td> 

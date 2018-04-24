@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.admin_template')
 @section('content')
 <button type="button" class="btn btn-success"  onclick="location.href = '/receptionists/create';">Add a new Receptionist </button>
 <table class="table">

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('admin.admin_template')
 @section('content')
 @if ($errors->any())
     <div class="alert alert-danger">
