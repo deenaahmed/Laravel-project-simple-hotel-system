@@ -18,12 +18,14 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('mobile')->nullable();
-            $table->string('country')->nullable();
-            $table->string('gender')->nullable(); /// male or female 
-            $table->string('nationalid')->nullable(); 
-            $table->string('avatarimage')->nullable();
-            $table->string('type'); //admin,manager,receptionist,client
+
+            $table->string('mobile')->nullable(); //for client
+            $table->string('country')->nullable(); // for client
+            $table->string('gender')->nullable(); /// for client (male,female) 
+            $table->string('national_id')->nullable();  //for manager and recep
+            $table->string('avatar_image')->nullable(); //for manager and recep
+            $table->int('creator')->nullable(); // holds the id of the creator
+
             $table->rememberToken();
             $table->timestamps();
         });

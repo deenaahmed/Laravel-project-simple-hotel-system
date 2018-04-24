@@ -18,8 +18,11 @@ class CreateRoomsTable extends Migration
             $table->integer('number');
             $table->integer('capacity');
             $table->string('createdby'); ///foriegn key to the manager table 
-            $table->integer('floorid'); // foreign key to the floor table 
+
+            $table->integer('floor_id'); // foreign key to the floor table 
             $table->string('isavailable'); //true or false 
+            $table->string('price');
+
             $table->timestamps();
         });
     }
