@@ -2,7 +2,7 @@
 @extends('layouts.clientmaster')
 @section('content')
 
-<div class="container">
+<div class="container" style="margin-top: 30px ; margin-bottom: 130px">
     <div class="row">
 
         <div class="col-lg-3">
@@ -14,7 +14,6 @@
                 </div>
             </div>
     </div>
-
 
         <!-- /.col-lg-3 -->
 
@@ -56,15 +55,15 @@
 @foreach($rooms as $room)
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="{{'/storage/roomsimages/'.$room->image}}" alt=""></a>
+                <a href="{{route('rooms.show',$room->id)}}"><img class="card-img-top" src="{{'/storage/roomsimages/'.$room->image}}" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#">ROOM Number {{$room->number}}</a>
+                        <a href="{{route('rooms.show',$room->id)}}">ROOM Number {{$room->number}}</a>
                     </h4>
                     <h5 style="color: red">${{$room->price}}</h5>
                 </div>
                 <div class="card-footer">
-                   <button class="btn btn-primary">Show Details</button>
+                   <a class="btn btn-primary" href="{{route('rooms.edit',$room->id)}} ">Make reservation</a>
                 </div>
             </div>
         </div>

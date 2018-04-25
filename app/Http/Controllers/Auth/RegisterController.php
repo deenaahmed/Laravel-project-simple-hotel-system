@@ -92,14 +92,14 @@ class RegisterController extends Controller
             $request->file('image')->store('public/clients/images');
             // save image name in data base
             $name = $request->file('image')->hashName();
-            $user->avatarimage = $name;
+            $user->avatar_image = $name;
 
 
         }
 
         else
         {
-            $user['avatarimage']='user-default.png';
+            $user['avatar_image']='user-default.png';
 
         }
         // set role client

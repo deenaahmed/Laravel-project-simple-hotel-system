@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Room ;
 
+use Cartalyst\Stripe\Laravel\StripeServiceProvider;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
+
+
+
+
 class ClientReservationController extends Controller
 {
     /**
@@ -36,6 +42,8 @@ class ClientReservationController extends Controller
     public function create()
     {
         //
+        return view("client.create");
+
     }
 
     /**
@@ -58,7 +66,7 @@ class ClientReservationController extends Controller
     public function show($id)
     {
         //
-        return view('client.show');
+
 
     }
 
@@ -71,6 +79,10 @@ class ClientReservationController extends Controller
     public function edit($id)
     {
         //
+        $room=Room::where('id',$id)->first();
+        return view('client.edit' , compact('room','id'));
+
+
     }
 
     /**
@@ -82,7 +94,20 @@ class ClientReservationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $room=Room::find($id)->first();
+
+        $stripe =Stripe::setApiKey('sk_test_zyzFKYxort7alJrqjacsBWtR');
+
+            $stripe->charges()->create([
+
+            'currency' => 'USD',
+            'amount'   => $room->price,
+            'source' => $request->stripeToken ,
+            'description' => 'book room number'.$room->number
+        ]);
+
+            return view('clients.index');
+
     }
 
     /**
