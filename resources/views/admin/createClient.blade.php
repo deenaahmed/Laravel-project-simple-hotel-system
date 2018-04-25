@@ -9,19 +9,18 @@
 @endif
 <form method="post" action="/posts">
 {{csrf_field()}}
-Name :- <input type="text" name="name" value="{{ $user->name }}">
+Name :- <input type="text" name="name">
 <br><br>
 Email :- 
-<input type="email" name="email" value="{{ $user->email }}">
+<input type="email" name="email">
 <br>
 <br>
+
 Gender:
 <select class="form-control" name="gender">
-@if ($user->gender === 'male')
-    <option selected="selected" value="male">male</option>
-    @else
+
+    <option value="male">male</option>
     <option value="female">female</option>
-    @endif
 </select>
 
 <br>

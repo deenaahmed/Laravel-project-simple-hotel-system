@@ -26,11 +26,11 @@ class UsersController extends Controller
 
     }
     public function reservations(Request $request){
-    	$array_of_clients=array();
+    	$array_of_clients = array();
     	$clients = User::where('approved_by','=',$request->user()->id)->get();
     	//dd($clients->id);
     	foreach ($clients as $client) {
-    		# code...
+    		# code...php
     	
     	    	$reservations = Reservation::where('user_id','=',$client->id)->first();
     	    	array_push($array_of_clients, $reservations);
@@ -60,15 +60,15 @@ class UsersController extends Controller
     	return view('admin.showClients',['users' => $users]);
 
     }
-    public function addclient(){
-
+    public function addClient(){
+        return view('admin.createClient');
     }
-    public function editclient($id){
+    public function editClient($id){
     	$user = User::find($id);
     	return view('admin.updateClient',['user' => $user]);
 
     }
-    public function deleteclient($id){
+    public function deleteClient($id){
     	User::find($id)->delete();
     	return redirect('/admin/clients'); // admin hom
 
