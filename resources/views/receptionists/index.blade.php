@@ -10,7 +10,6 @@
       <th scope="col">Receptionist National ID</th>
       <th scope="col">Receptionist created at</th>
       <th scope="col">Added by</th>
-	  <th scope="col">View action</th>
 	  <th scope="col">Edit action</th>
 	  <th scope="col">Delete action</th>
     </tr>
@@ -24,7 +23,6 @@
 <td> {{$recep->email}}</td> 
 <td> {{$recep->national_id}}</td> 
  <td>{{ \Carbon\Carbon::parse($recep->createdat)->format('d/m/Y')}}</td> 
-<td><button type="button" class="btn btn-info" onclick="location.href = '/receptionists/{{$recep->id}}';">View</button></td>
  <td><button type="button" class="btn btn-primary" onclick="location.href = '/receptionists/{{$recep->id}}/edit';">Edit</button></td> 
  <td>
 <form  action="/receptionists/{{$recep->id}}" method="Post">

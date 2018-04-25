@@ -10,7 +10,6 @@
       <th scope="col">Manager National ID</th>
       <th scope="col">Manager created at</th>
       <th scope="col">Added by</th>
-	  <th scope="col">View action</th>
 	  <th scope="col">Edit action</th>
 	  <th scope="col">Delete action</th>
     </tr>
@@ -25,7 +24,6 @@
 <td> {{$manager->national_id}}</td> 
 <td> {{$manager->creator}}</td> 
  <td>{{ \Carbon\Carbon::parse($manager->createdat)->format('d/m/Y')}}</td> 
-<td><button type="button" class="btn btn-info" onclick="location.href = '/managers/{{$manager->id}}';">View</button></td>
  <td><button type="button" class="btn btn-primary" onclick="location.href = '/managers/{{$manager->id}}/edit';">Edit</button></td> 
  <td>
 <form  action="/managers/{{$manager->id}}" method="Post">
