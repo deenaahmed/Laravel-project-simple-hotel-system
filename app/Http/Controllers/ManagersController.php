@@ -61,7 +61,7 @@ class ManagersController extends Controller
                 'national_id' => $request->national_id,
                 'avatar_image' => $path,
                 'type' => 2,
-            ]);
+            ])->assignRole('manager');
 
        return redirect(route('managers.index'));
     }
