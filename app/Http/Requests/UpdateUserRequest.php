@@ -25,7 +25,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'national_id'=>'unique:users,national_id,'. $this->id, 
-            'email'=>'unique:users,national_id,'. $this->id,
+            'email'=>'unique:users,email,'. $this->id,
             'password'=>'min:6',
             'creator' => 'exists:users,id',
             'avatar_image' => 'mimes:jpeg,jpg',

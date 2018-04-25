@@ -60,7 +60,7 @@ class ReceptionistsController extends Controller
             'national_id' => $request->national_id,
             'avatar_image' => $path,
             'type' => 3,
-        ])->assignRole('receptionist');;
+        ]);
 
        return redirect(route('receptionists.index'));
     }
