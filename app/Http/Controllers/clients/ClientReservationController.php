@@ -5,6 +5,13 @@ namespace App\Http\Controllers\clients;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Room ;
+use Illuminate\Support\Facades\Auth;
+
+use Cartalyst\Stripe\Laravel\StripeServiceProvider;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
+
+
+
 
 class ClientReservationController extends Controller
 {
@@ -36,6 +43,10 @@ class ClientReservationController extends Controller
     public function create()
     {
         //
+        return view("client.create");
+
+
+
     }
 
     /**
@@ -58,7 +69,7 @@ class ClientReservationController extends Controller
     public function show($id)
     {
         //
-        return view('client.show');
+
 
     }
 
@@ -71,6 +82,12 @@ class ClientReservationController extends Controller
     public function edit($id)
     {
         //
+
+        $room=Room::where('id','=',$id)->first();
+
+        return view('client.edit' , compact('room','id'));
+
+
     }
 
     /**
@@ -82,10 +99,43 @@ class ClientReservationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $room=Room::where('id','=',$id)->first();
+        $accompany=($request->accompany);
+        $accompany = (int) $accompany;
+        $capcity=$room->capacity;
+
+        if($accompany>$capcity)
+        {
+            return redirect()->route('rooms.edit' , [$id] )->with('failure' , 1);
+
+        }
+
+        $stripe =Stripe::setApiKey('sk_test_zyzFKYxort7alJrqjacsBWtR');
+try {
+    $stripe->charges()->create([
+
+        'currency' => 'USD',
+        'amount' => $room->price,
+        'source' => $request->stripeToken,
+        'description' => 'book room number' . $room->number
+    ]);
+}catch (\Exception $e){
+
+    return redirect()->route('rooms.edit' , [$id] )->with('cardproblem' , 1);
+
+}
+
+        // in case success insert the booking in our  databse
+        $user=Auth::user();
+        $user->rooms()->save( $room,['clientpaidprice'=>$room->price]);
+        $room->isavailable='false';
+        $room->save();
+
+    return redirect()->route('client.home')->with('success' , 1);
+
     }
 
-    /**
+    /**c
      * Remove the specified resource from storage.
      *
      * @param  int  $id

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -92,14 +93,14 @@ class RegisterController extends Controller
             $request->file('image')->store('public/clients/images');
             // save image name in data base
             $name = $request->file('image')->hashName();
-            $user->avatarimage = $name;
+            $user->avatar_image = $name;
 
 
         }
 
         else
         {
-            $user['avatarimage']='user-default.png';
+            $user['avatar_image']='user-default.png';
 
         }
         // set role client
@@ -108,4 +109,21 @@ class RegisterController extends Controller
         $user->save();
 
     }
+
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
+    }
+
+
+
+
+
 }

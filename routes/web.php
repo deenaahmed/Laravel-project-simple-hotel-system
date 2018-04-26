@@ -12,8 +12,6 @@
 */
 
 
-
-
 /*
 
 
@@ -22,19 +20,14 @@ Diaa Section
 
 */
 
-Route::get('/' , 'clients\ClientReservationController@index');
+Route::get('/' , 'clients\ClientReservationController@index')->name('client.home');
 Route::resource('/reservations/rooms', 'clients\ClientReservationController')->except([
     'index']);
-
-
 
 
 /*
 
 Mai Section 
-
-
-
 
 
 

@@ -21,7 +21,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
 
-        'name', 'email', 'password','gender','country' , 'avatarimage', 'national_id','is_approved','approved_by','mobile'
+        'name', 'email', 'password','gender','country' , 'avatar_image', 'national_id','is_approved','approved_by','mobile'
 
     ];
 
@@ -41,7 +41,7 @@ class User extends Authenticatable
 
     public function rooms()
     {
-        return $this->belongsToMany(Room::class,'reservations')->withPivot('user_id', 'room_id','clientpaidprice');
+        return $this->belongsToMany(Room::class,'reservations')->withPivot('user_id', 'room_id','clientpaidprice','created_at','updated_at');
 
     }
 
