@@ -9,7 +9,8 @@
 @endif
 <h2>Add client</h2>
 
-<form method="post" action="/admin/clients">
+<form method="post" action="/admin/clients" enctype="multipart/form-data">
+
 {{csrf_field()}}
 user name :- <input type="text" name="name" />
 
@@ -27,15 +28,15 @@ Email :- <input type="text" name="email" />
 <br/>
 <label for="country" >{{ __('Country') }}</label>
 <select   name="country" >
-                                    <option value="" selected disabled>Please select Country</option>
-                                @foreach(countries() as $country)
-                                    <option >{{$country['name']}}</option>
-                                        @endforeach
+<option value="" selected disabled>Please select Country</option>
+@foreach(countries() as $country)
+<option >{{$country['name']}}</option>
+@endforeach
 </select>
 <br/>
 <br/>
  <label for="image" >{{ __('image') }}</label>
- select image: <input  type="file" name="image" id="profile-img"   onchange="previewImage(this)"   />
+ select image: <input  type="file" name="image"    />
 <br/>
 <br/>
 

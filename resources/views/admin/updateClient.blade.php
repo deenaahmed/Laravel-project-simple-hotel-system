@@ -36,7 +36,7 @@ Email :- <input type="text" name="email" value="{{$user->email}}" />
 <select   name="country" >
 <!-- <option value="" selected disabled>Please select Country</option> -->
 @foreach(countries() as $country)
-    @if($user->country===$country)
+    @if($user->country==$country['name'])
 
 <option selected="selected">{{$country['name']}}</option>
 @else
@@ -47,7 +47,7 @@ Email :- <input type="text" name="email" value="{{$user->email}}" />
 <br/>
 <br/>
  <label for="image" >{{ __('image') }}</label>
- select image: <input  type="file" name="image" id="profile-img" value="{{$user->avatarimage}}"  onchange="previewImage(this)"   />
+ select image: <input  type="file" name="image" id="profile-img" value="{{$user->avatar_image}}"  onchange="previewImage(this)"   />
 <br/>
 <br/>
 

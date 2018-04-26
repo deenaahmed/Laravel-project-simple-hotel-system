@@ -33,7 +33,7 @@
       <td>{{ $user->name }}</td>
       <td>{{ $user->email }}</td>
       <td>{{ $user->mobile }}</td>
-      <td>{{ $user->avatarimage }}</td>
+      <td> <img src="{{URL::asset('/storage/clients/images/'.$user->avatar_image)}}" height="100px" ></td>
       <td>{{ $user->country }}</td>
       <td>{{ $user->gender }}</td>
 

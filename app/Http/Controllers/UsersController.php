@@ -70,16 +70,28 @@ class UsersController extends Controller
 
     public function storeClient(Request $request)
     {
+        $image = $request->file('image')->store('public/clients/images');
+        //dd($image);
+         $name = $request->file('image')->hashName();
+        //$request->file('image')->store('image');
+        // $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+        //$destinationPath = public_path('/clients/images');
+       // $image->move($destinationPath, $image);
+
+        //$request->file('image')->store('public/clients/images');
+            // save image name in data base
+            
          //dd($request->all());
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'gender' => $request->gender,
             'country' => $request->country,
-            'avatarimage' => $request->image,
+            'avatar_image' => $name,
             'password' => Hash::make($request->password)
 
         ]);
+        
         
        return redirect('admin/clients'); 
     }
@@ -97,7 +109,7 @@ class UsersController extends Controller
 
         User::find($id)->update(['name'=>$request->name,
             'email' => $request->email,
-            'avatarimage' => $request->image,
+            'avatar_image' => $request->image,
             'country' => $request->country,
             'gender' => $request->gender,
             'password' => $request->password]);
