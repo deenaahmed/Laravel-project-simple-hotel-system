@@ -8,7 +8,7 @@ class Room extends Model
 {
     
     protected $fillable=[
-        'number','capacity','price','user_id' ,'floor_id' ,'isavailable'
+        'number','capacity','price','user_id' ,'floor_id' ,'isavailable' ,'image'
     ];
     
     public function floor() {

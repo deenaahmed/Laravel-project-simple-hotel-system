@@ -39,6 +39,12 @@ public function create(){
   }
   
 public function store(StoreRoomRequest $request){
+ 
+  $image = $request->file('image');
+  $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+  $destinationPath = public_path('/room_images');
+  $image->move($destinationPath, $input['imagename']);
+
   $room = Room::create([
       'number' => $request->number,
       'capacity' =>$request->capacity,
@@ -46,7 +52,8 @@ public function store(StoreRoomRequest $request){
       'floor_id'=> $request->floor,
       'user_id'=> $request->user,
       'isavailable'=> 'yes',
-    ]);
+      'image'=> $input['imagename']
+         ]);
     return redirect('rooms');
   }  
 

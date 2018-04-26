@@ -16,7 +16,7 @@
 <div class="row">
 <div class="col-2"> </div>
 <dic class="col-8">
-<form method="post" action="/rooms" > 
+<form method="post" action="/rooms" enctype="multipart/form-data"> 
 {{csrf_field()}}
   <div class="form-group">
     <label>Room Number</label>
@@ -53,6 +53,9 @@
     </select>
 
   </div>
+
+  <br>
+ Image: <input type="file" name="image" class="form-control" />
   <button type="submit" class="btn btn-success">Submit</button>
 </form>
 
