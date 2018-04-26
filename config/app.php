@@ -159,7 +159,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Cartalyst\Stripe\Laravel\StripeServiceProvider::class
+        Cartalyst\Stripe\Laravel\StripeServiceProvider::class ,
+        Yajra\DataTables\DataTablesServiceProvider::class,
 
     ],
 
@@ -209,7 +210,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class
+        'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class ,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ],
 
