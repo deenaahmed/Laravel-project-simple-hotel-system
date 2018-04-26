@@ -40,10 +40,7 @@ Email :- <input type="text" name="email" />
 <br/>
 
  password: <input id="password" type="password" name="password" required/>
-<br/>
-<br/>
-Confirm password:
- <input id="password-confirm" type="password" name="password_confirmation" required/>
+
  <br/>
  <br/>
 <input type="submit" value="Submit" class="btn btn-primary"/>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Notifications\NotifyClient;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Reservation;
 use App\User;
@@ -76,7 +77,7 @@ class UsersController extends Controller
             'gender' => $request->gender,
             'country' => $request->country,
             'avatarimage' => $request->image,
-            'password' => $request->password,
+            'password' => Hash::make($request->password)
 
         ]);
         
