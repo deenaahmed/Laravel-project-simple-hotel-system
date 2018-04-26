@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Room extends Model
 {
     
@@ -16,7 +17,16 @@ class Room extends Model
     }
 
     public function user() {
-        return $this ->belongsTo(User::class);
+     //   return $this ->belongsTo(User::class);
+
+     //   return $this->belongsToMany(User::class);
+    return $this->belongsToMany(User::class,'reservations')->withPivot('user_id', 'room_id','clientpaidprice','created_at','updated_at');
+
     }
-   
+    public function getPriceAttribute($value)
+    {
+        return ($value/100);
+    }
 }
+
+
