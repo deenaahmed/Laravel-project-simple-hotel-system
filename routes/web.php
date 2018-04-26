@@ -31,9 +31,6 @@ Mai Section
 
 
 
-
-
-
 */
 Route::get('receptionist','UsersController@home');
 Route::get('receptionist/manage','UsersController@manageClients');

@@ -20,7 +20,7 @@ class Room extends Model
     public function  users()
     {
 
-       return $this->belongsToMany(User::class,'reservations')->withPivot('user_id', 'room_id','clientpaidprice');
+       return $this->belongsToMany(User::class,'reservations')->withPivot('user_id', 'room_id','clientpaidprice','created_at','updated_at');
     }
 
 

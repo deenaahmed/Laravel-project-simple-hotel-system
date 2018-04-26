@@ -2,6 +2,18 @@
 @extends('layouts.clientmaster')
 @section('content')
 
+    @if (Session::has('success'))
+        <div class="container">
+            <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success!</strong> "You booked the  successfully"
+            </div>
+        </div>
+
+    @endif
+
+
+
 <div class="container" style="margin-top: 30px ; margin-bottom: 130px">
     <div class="row">
 
