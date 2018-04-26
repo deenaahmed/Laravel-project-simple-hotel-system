@@ -15,11 +15,9 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
-
             $table->integer('user_id'); //foreign key for the client table
             $table->integer('room_id'); //foreignkey for the room table
             $table->integer('clientpaidprice')->nullable();  // ichange here
-
             $table->timestamps();
         });
     }

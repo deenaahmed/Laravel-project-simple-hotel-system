@@ -8,10 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Room ;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+
 class User extends Authenticatable
 {
+    protected $table_id="datatables_data";
     use Notifiable;
     use HasRoles;
+
 
 
     /**
@@ -25,6 +28,7 @@ class User extends Authenticatable
 
     ];
 
+    
     /**
      * The attributes that should be hidden for arrays.
      *

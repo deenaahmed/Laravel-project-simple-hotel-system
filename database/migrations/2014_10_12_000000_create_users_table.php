@@ -26,13 +26,6 @@ class CreateUsersTable extends Migration
             $table->integer('is_approved')->default(0);
             $table->integer('approved_by')->nullable();
             $table->integer('creator')->nullable();
-                                                                //creator integer
-                                                                //
-
-
-
-
-
             $table->rememberToken();
             $table->timestamps();
         });
