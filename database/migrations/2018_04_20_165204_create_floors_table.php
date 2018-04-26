@@ -15,8 +15,9 @@ class CreateFloorsTable extends Migration
     {
         Schema::create('floors', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('number');
-            $table->string('createdby'); // foreign key from the manager table
+            $table->string('number');
+            $table->string('name');
+            $table->integer('user_id'); // foreign key from the manager table
             $table->timestamps();
         });
     }

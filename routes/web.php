@@ -11,6 +11,43 @@ use App\User;
 |
 */
 
+/*
+
+
+Diaa Section 
+
+
+*/
+
+Route::get('/' , 'clients\ClientReservationController@index')->name('client.home');
+Route::resource('/reservations/rooms', 'clients\ClientReservationController')->except([
+    'index']);
+
+
+/*
+
+Mai Section 
+
+
+
+*/
+Route::get('receptionist','UsersController@home');
+Route::get('receptionist/manage','UsersController@manageClients');
+Route::get('receptionist/approved','UsersController@approvedClients');
+Route::get('receptionist/reservations','UsersController@reservations');
+Route::get('receptionist/{id}/approve','UsersController@approve');
+Route::get('receptionist/{id}/delete','UsersController@delete');
+//*********************************Admin*****
+Route::get('admin/clients','UsersController@showClients');
+Route::get('admin/clients/{id}/edit','UsersController@editClient');
+Route::get('admin/clients/{id}/delete','UsersController@deleteClient');
+/*
+
+
+Deena Section 
+
+
+*/
 
 Route::get(
     'managers',
@@ -35,3 +72,14 @@ Route::get('receptionists/{id}/edit','ReceptionistsController@edit');
 Route::put('receptionists/{id}','ReceptionistsController@update');
 Route::get('receptionists/{id}','ReceptionistsController@show');
 Route::delete('receptionists/{id}','ReceptionistsController@destroy');
+
+/*
+
+
+Aya Section 
+
+
+*/
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
