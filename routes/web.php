@@ -34,7 +34,9 @@ Route::get('admin/clients/{id}/edit','UsersController@editClient');
 
 Route::get('admin/clients/{id}/delete','UsersController@deleteClient');
 
-Route::get('admin/clients/add','UsersController@addClient');
+Route::get('admin/clients/add','UsersController@createClient');
+
+Route::post('admin/clients','UsersController@storeClient');
 
 /*
 

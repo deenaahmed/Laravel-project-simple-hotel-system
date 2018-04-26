@@ -16,10 +16,11 @@ class CreateRoomsTable extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('number');
-            $table->integer('price');
+            $table->float('price');
             $table->integer('capacity');
-            $table->string('createdby'); ///foriegn key to the manager table 
-            $table->integer('floorid'); // foreign key to the floor table 
+            $table->string('user_id'); ///foriegn key to the manager table 
+            $table->integer('floor_id'); // foreign key to the floor table 
+            $table->string('image'); ///foriegn key to the manager table 
             $table->string('isavailable'); //true or false 
             $table->timestamps();
         });

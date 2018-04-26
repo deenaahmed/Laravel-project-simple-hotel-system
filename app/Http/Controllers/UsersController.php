@@ -60,9 +60,26 @@ class UsersController extends Controller
     	return view('admin.showClients',['users' => $users]);
 
     }
-    public function addClient(){
+    public function createClient(){
         return view('admin.createClient');
     }
+
+    public function storeClient(Request $request)
+    {
+         //dd($request->all());
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'gender' => $request->gender,
+            'country' => $request->country,
+            'avatarimage' => $request->image,
+            'password' => $request->password,
+
+        ]);
+        
+       return redirect('admin/clients'); 
+    }
+
     public function editClient($id){
     	$user = User::find($id);
     	return view('admin.updateClient',['user' => $user]);

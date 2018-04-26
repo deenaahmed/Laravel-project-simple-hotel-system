@@ -21,10 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('mobile')->nullable();
             $table->string('country')->nullable();
             $table->string('gender')->nullable(); /// male or female 
-            $table->string('nationalid')->nullable(); // edit national_id 
-            $table->string('avatarimage')->nullable();   // edit avatar_image
-            $table->integer('type')->nullable();  // httshaaal
-            $table->integer('is_approved')->nullable();// default(0) 
+            $table->string('national_id')->nullable(); // edit national_id 
+            $table->string('avatar_image')->nullable();   // edit avatar_image
+           // $table->integer('type')->nullable();  // httshaaal
+            $table->integer('is_approved')->default(0);// default(0) 
             $table->integer('approved_by')->nullable();
 //            $table->integer('creator')->nullable();
 

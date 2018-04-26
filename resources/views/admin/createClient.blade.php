@@ -7,24 +7,45 @@
         </ul>
     </div>
 @endif
-<form method="post" action="/posts">
+<h2>Add client</h2>
+
+<form method="post" action="/admin/clients">
 {{csrf_field()}}
-Name :- <input type="text" name="name">
-<br><br>
-Email :- 
-<input type="email" name="email">
-<br>
-<br>
+user name :- <input type="text" name="name" />
 
-Gender:
-<select class="form-control" name="gender">
+<br /><br />
+Email :- <input type="text" name="email" />
+<br/><br/>
+                          
+  <select name="gender">
+                                    <option value="" selected disabled>Please select gender</option>
+                                    <option value="male">male</option>
+                                    <option value="female">female</option>
+                                </select>
 
-    <option value="male">male</option>
-    <option value="female">female</option>
+<br/>
+<br/>
+<label for="country" >{{ __('Country') }}</label>
+<select   name="country" >
+                                    <option value="" selected disabled>Please select Country</option>
+                                @foreach(countries() as $country)
+                                    <option >{{$country['name']}}</option>
+                                        @endforeach
 </select>
+<br/>
+<br/>
+ <label for="image" >{{ __('image') }}</label>
+ select image: <input  type="file" name="image" id="profile-img"   onchange="previewImage(this)"   />
+<br/>
+<br/>
 
-<br>
-<input type="submit" value="Submit" class="btn btn-primary">
+ password: <input id="password" type="password" name="password" required/>
+<br/>
+<br/>
+Confirm password:
+ <input id="password-confirm" type="password" name="password_confirmation" required/>
+ <br/>
+ <br/>
+<input type="submit" value="Submit" class="btn btn-primary"/>
 </form>
 
-@endsection
