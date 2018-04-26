@@ -9,8 +9,10 @@
         <thead>
         <tr>
 
-            <th>created_at</th>
-            <th>updated_at</th>
+            <th>Room number</th>
+            <th>Paid price</th>
+            <th>accompany number</th>
+
 
         </tr>
         </thead>
@@ -24,8 +26,13 @@
             serverSide: true,
             ajax: 'http://hotel.local/client/reservations/{{Auth::user()->id}}',
             columns: [
-                { data: 'name', name: 'name' },
+
                 { data: 'number', name: 'number' },
+
+                { data: 'clientpaidprice', name: 'clientpaidprice' },
+
+                { data: 'accompanynumber', name: 'accompanynumber' }
+
             ]
         });
     });

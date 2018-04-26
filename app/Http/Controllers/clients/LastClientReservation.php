@@ -16,11 +16,6 @@ class LastClientReservation extends Controller
     public function index()
     {
 
-        $user=User::where('id',1);
-        dd(datatables()->of($user)->toJson());
-
-
-        // return Datatables::of(User::query())->make(true);
         return view('client.ShowLastClientReservation');
 
 
@@ -29,17 +24,18 @@ class LastClientReservation extends Controller
 
     public function show($id)
     {
-       // return Datatables::of(User::query())->make(true);
 
 
-         //return datatables()->of(Reservation::query())->toJson();
+        $rooms=\DB::table('rooms')
 
-  //      $posts = DB::table('posts')->join('users', 'users.id', '=', 'reservations.user_id')
-    //        ->select(['posts.id', 'posts.title', 'users.name', 'users.email', 'posts.created_at', 'posts.updated_at']);
+            ->join('reservations','reservations.room_id','=','rooms.id')
+            ->select('rooms.number','reservations.clientpaidprice','reservations.accompanynumber')
+            ->where(['reservations.user_id' => $id])
+            ->get();
 
-        $user=User::where('id',1);
 
-        return  datatables()->of($user)->toJson();
+       return datatables()::of($rooms)->toJson();
+
 
     }
 
