@@ -1,5 +1,5 @@
 <?php
-
+use App\Notifications\NotifyClient;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +26,15 @@ Route::get('receptionist/{id}/approve','UsersController@approve');
 
 
 Route::get('receptionist/{id}/delete','UsersController@delete');
+
+ // Route::get('/notify', function () {
+ // $user = App\User::first();
+ 
+ // $user->notify(new NotifyClient("A new user has visited on your application."));
+ 
+//    return view('welcome');
+ 
+// });
 //*********************************Admin*****
 
 Route::get('admin/clients','UsersController@showClients');

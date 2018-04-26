@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'hotel.system123@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'hotel system'),
     ],
 
     /*
@@ -85,7 +85,6 @@ return [
     */
 
     'username' => env('MAIL_USERNAME'),
-
     'password' => env('MAIL_PASSWORD'),
 
     /*

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Notifications\NotifyClient;
 use Illuminate\Http\Request;
 use App\Reservation;
 use App\User;
@@ -43,9 +44,11 @@ class UsersController extends Controller
 
     public function approve(Request $request,$id){
     	//dd( $id);
+        $user = User::find($id);
     	 User::find($id)->update(['is_approved' => '1',
     	 	'approved_by' => $request->user()->id
             ]);
+         $user->notify(new NotifyClient("this is a notification msg"));
         return redirect('/receptionist/manage');
 
     }
