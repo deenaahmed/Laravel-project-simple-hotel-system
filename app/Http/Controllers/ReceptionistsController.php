@@ -63,6 +63,11 @@ class ReceptionistsController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
+        $role = Role::create(['name' => 'receptionist']);
+        $permission = Permission::create(['name' => 'recep manage his clients']);
+        $permission1 = Permission::create(['name' => 'recep manage clients']);
+        $role->givePermissionTo($permission);
+        $role->givePermissionTo($permission1);
         if($request->file('avatar_image')==null){
         $path='/avatars2/Nophoto.jpg';
         }
@@ -70,7 +75,7 @@ class ReceptionistsController extends Controller
         $path = Storage::putFile('avatars2', $request->file('avatar_image'));
         }
         Storage::setVisibility($path, 'public');
-		User::create([
+		$receptionist=User::create([
 			'name' => $request->name,
 			'email' => $request->email,
             'password' => $request->password,
@@ -78,7 +83,7 @@ class ReceptionistsController extends Controller
             'avatar_image' => $path,
             'type' => 3,
         ]);
-
+        $receptionist->assignRole('receptionist');
        return redirect(route('receptionists.index'));
     }
 

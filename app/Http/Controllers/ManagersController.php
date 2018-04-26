@@ -34,15 +34,13 @@ class ManagersController extends Controller
         return view('managers.index'); 
    }
    public function getdata()
-    {
-          
+    {    
         return Datatables::of(User::query())
         ->addColumn('action', function($query){
         $ret =  "<a href='managers/" . $query->id . "/edit' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>";
          $ret .= "<button type='button' target='".$query->id."'  class='delete btn-xs btn btn-danger' > DELETE </button>";
             return $ret;
     })->rawcolumns(['action']) ->make(true);
-
     }
 
     /**
@@ -66,6 +64,13 @@ class ManagersController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
+        $role = Role::create(['name' => 'manager']);
+        $permission = Permission::create(['name' => 'manager manage his receptionist']);
+        $permission1 = Permission::create(['name' => 'manager manage clients']);
+        $permission2 = Permission::create(['name' => 'manager manage receptionists']);
+        $role->givePermissionTo($permission);
+        $role->givePermissionTo($permission1);
+        $role->givePermissionTo($permission2);
         if($request->file('avatar_image')==null){
         $path='/avatars2/Nophoto.jpg';
         }
@@ -73,13 +78,14 @@ class ManagersController extends Controller
         $path = Storage::putFile('avatars2', $request->file('avatar_image'));
         }
         Storage::setVisibility($path, 'public');
-			User::create([
+			$manager=User::create([
 				'name' => $request->name,
 				'email' => $request->email,
                 'password' => $request->password,
                 'national_id' => $request->national_id,
                 'avatar_image' => $path,
             ]);
+            $manager->assignRole('manager');
 
        return redirect(route('managers.index'));
     }

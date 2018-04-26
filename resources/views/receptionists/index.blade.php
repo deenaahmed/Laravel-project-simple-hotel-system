@@ -6,10 +6,13 @@
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Receptionist Name</th>
+      @hasrole('admin')
       <th scope="col">Receptionist Email</th>
       <th scope="col">Receptionist National ID</th>
       <th scope="col">Receptionist created at</th>
       <th scope="col">Added by</th>
+      @else
+    @endhasrole
 	  <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -33,9 +36,12 @@ $(function() {
             { data: 'id', name: 'id' },
             { data: 'name', name: 'name' },
             { data: 'email', name: 'email' },
+            @hasrole('admin')
             { data: 'national_id', name: 'national_id' },
             { data: 'created_at', name: 'created_at' },
             { data: 'creator', name: 'creator' },
+            @else
+            @endhasrole
             { data: 'action', name: 'action', orderable: false, searchable: false }
         ]
     });

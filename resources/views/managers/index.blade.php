@@ -10,7 +10,6 @@
         <th scope="col">Manager Email</th>
         <th scope="col">Manager National ID</th>
         <th scope="col">Manager created at</th>
-        <th scope="col">Added by</th>
         <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -35,7 +34,6 @@ $(function() {
             { data: 'email', name: 'email' },
             { data: 'national_id', name: 'national_id' },
             { data: 'created_at', name: 'created_at' },
-            { data: 'creator', name: 'creator' },
             { data: 'action', name: 'action', orderable: false, searchable: false }
         ]
     });

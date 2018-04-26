@@ -10,6 +10,7 @@ use App\Room ;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
+
 class User extends Authenticatable implements BannableContract
 {
     protected $table_id="datatables_data";
