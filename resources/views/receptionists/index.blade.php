@@ -1,4 +1,3 @@
-<!-- @extends('admin.admin_template') -->
 @extends('layouts.base')
 @section('content')
 <button type="button" class="btn btn-success"  onclick="location.href = '/receptionists/create';">Add a new Receptionist </button>
@@ -22,8 +21,8 @@
   <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-  <script src="js/jquery.js" type="text/javascript"></script>
-  <script src="js/jquery.dataTables.js" type="text/javascript"></script>
+  <script src="{{asset('js/jquery.js')}}" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.js" type="text/javascript"></script>
     <script>
 $(function() {
     $('#table_id').DataTable({
@@ -59,6 +58,15 @@ $(document).on('click','.delete',function(){
             }
         }
     });
+    $('#table_id').DataTable().ajax.reload();
+});
+$(document).on('click','.ban',function(){
+    let id = $(this).attr('targetban');
+    $.ajax({
+        url:`receptionists/${id}/bann`,
+        type: 'GET',
+    });
+    $('#table_id').DataTable().ajax.reload();
 });
 </script>
 @endpush

@@ -1,4 +1,4 @@
-@extends('admin.admin_template')
+@extends('layouts.base')
 @section('content')
 <div  style="width: 18rem;">
   <div >

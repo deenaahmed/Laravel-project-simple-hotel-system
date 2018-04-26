@@ -1,5 +1,4 @@
 
-<!-- @extends('admin.admin_template') -->
 @extends('layouts.base')
 @section('content')
 <button type="button" class="btn btn-success"  onclick="location.href = '/managers/create';">Add a new Maneger </button>
@@ -22,8 +21,8 @@
   <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-  <script src="js/jquery.js" type="text/javascript"></script>
-  <script src="js/jquery.dataTables.js" type="text/javascript"></script>
+  <script src="{{asset('js/jquery.js')}}" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.js" type="text/javascript"></script>
     <script>
 $(function() {
     $('#table_id').DataTable({
@@ -55,7 +54,7 @@ $(document).on('click','.delete',function(){
         sucsess: res => {
             res = JSON.parce(res);
             if(res.status){
-                $(this).parents('tr').remove();
+                $(this).parent().parent().remove();
             }
         }
     });
