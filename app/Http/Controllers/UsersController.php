@@ -85,6 +85,21 @@ class UsersController extends Controller
     	return view('admin.updateClient',['user' => $user]);
 
     }
+
+
+    public function updateClient($id,Request $request){
+        //$post = Post::find($id);
+       
+
+        User::find($id)->update(['name'=>$request->name,
+            'email' => $request->email,
+            'avatarimage' => $request->image,
+            'country' => $request->country,
+            'gender' => $request->gender,
+            'password' => $request->password]);
+        return redirect('/admin/clients');
+
+}
     public function deleteClient($id){
     	User::find($id)->delete();
     	return redirect('/admin/clients'); // admin hom
