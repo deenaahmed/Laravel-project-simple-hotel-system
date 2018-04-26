@@ -38,9 +38,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
-
-
     // relation many to many
 
     public function rooms()

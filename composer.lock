@@ -4,8 +4,60 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "342c37b707327a0ff732af8c3713b53b",
+    "content-hash": "b57fc8c0a8caf3a61e0885d5a44f8255",
     "packages": [
+        {
+            "name": "alfa6661/laravel-autonumber",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alfa6661/laravel-autonumber.git",
+                "reference": "770b008138cb1467cb14ff686d2c36913fe85c83"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alfa6661/laravel-autonumber/zipball/770b008138cb1467cb14ff686d2c36913fe85c83",
+                "reference": "770b008138cb1467cb14ff686d2c36913fe85c83",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "^5.1|^5.2|^5.3|^5.4",
+                "illuminate/database": "^5.1|^5.2|^5.3|^5.4",
+                "illuminate/support": "^5.1|^5.2|^5.3|^5.4",
+                "php": ">=5.6.4 || ^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Alfa6661\\AutoNumber\\AutoNumberServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Alfa6661\\AutoNumber\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alfa Adhitya",
+                    "email": "alfa2159@gmail.com"
+                }
+            ],
+            "description": "Laravel package to create autonumber for Eloquent model",
+            "homepage": "https://github.com/alfa6661/laravel-autonumber",
+            "keywords": [
+                "autonumber",
+                "eloquent",
+                "laravel"
+            ],
+            "time": "2017-08-08T08:49:14+00:00"
+        },
         {
             "name": "almasaeed2010/adminlte",
             "version": "v2.4.3",
@@ -1716,16 +1768,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.6.17",
+            "version": "v5.6.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "0f787c763ae8fb9fae0c8c809830ba4fa81e2d9d"
+                "reference": "088f286d0b5145275ced93799e23980a81898d10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/0f787c763ae8fb9fae0c8c809830ba4fa81e2d9d",
-                "reference": "0f787c763ae8fb9fae0c8c809830ba4fa81e2d9d",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/088f286d0b5145275ced93799e23980a81898d10",
+                "reference": "088f286d0b5145275ced93799e23980a81898d10",
                 "shasum": ""
             },
             "require": {
@@ -1851,7 +1903,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-04-17T12:51:04+00:00"
+            "time": "2018-04-26T13:25:23+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1918,16 +1970,16 @@
         },
         {
             "name": "laravelcollective/html",
-            "version": "v5.6.6",
+            "version": "v5.6.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LaravelCollective/html.git",
-                "reference": "b3a10245c791a211e5f8ec37117f4549cd22aabe"
+                "reference": "38f2c6ff0d3dfc497175a5cff5e24b3937f6e2c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/b3a10245c791a211e5f8ec37117f4549cd22aabe",
-                "reference": "b3a10245c791a211e5f8ec37117f4549cd22aabe",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/38f2c6ff0d3dfc497175a5cff5e24b3937f6e2c9",
+                "reference": "38f2c6ff0d3dfc497175a5cff5e24b3937f6e2c9",
                 "shasum": ""
             },
             "require": {
@@ -1941,7 +1993,7 @@
             "require-dev": {
                 "illuminate/database": "5.6.*",
                 "mockery/mockery": "~1.0",
-                "phpunit/phpunit": "~5.4"
+                "phpunit/phpunit": "~7.1"
             },
             "type": "library",
             "extra": {
@@ -1982,7 +2034,7 @@
             ],
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "https://laravelcollective.com",
-            "time": "2018-04-09T14:09:32+00:00"
+            "time": "2018-04-26T16:09:18+00:00"
         },
         {
             "name": "league/flysystem",
@@ -4919,7 +4971,7 @@
             ],
             "authors": [
                 {
-                    "name": "Pádraic Brady",
+                    "name": "Padraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 },
