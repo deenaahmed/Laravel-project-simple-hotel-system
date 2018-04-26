@@ -2,13 +2,11 @@
 
 @section('content')
 
-@if ($errors != '')
-<div class="alert alert-danger">
-        <ul>
-                <li>{{ $errors }}</li>
-        </ul>
+@if (session('alert'))
+    <div class="alert alert-danger">
+        {{ session('alert') }}
     </div>
-    @endif
+@endif
 
 <br>
 <br>
@@ -56,14 +54,16 @@ $(document).on("click", ".delete", function() {
 var line=$(this).parent().parent()
  if (confirm("Sure to delete?")) {
    $.ajax({
-       url: "/rooms/"+$(this).attr('post'),
+       url: "/rooms/"+$(this).attr('room'),
         type: 'DELETE',
         data : {'_token' : '{{csrf_token()}}'},
             success: function(result){
                 line.remove();
+                window.location.href="rooms"
             },
             error: function(err){
-                console.log(err);
+                window.location.href="rooms"
+
             }
     });
   }

@@ -13,7 +13,7 @@ class FloorsController extends Controller
 {
   public function index(){
     return view('floors.index',[
-      'errors' => '',
+     
     ]);
   }
 
@@ -23,7 +23,7 @@ public function getdatatable(){
   return datatables()->of($floors)
   ->addColumn('action', function ($data) {
     return "<a class='btn btn-xs btn-primary' href='/floors/$data->id/edit'>Edit</a> 
-    <a class='btn btn-xs btn-danger delete ' csrf_token() id='delete' post='$data->id' href='/floors/$data->id'>Delete </a>
+    <button class='btn btn-xs btn-danger delete '  floor='$data->id' id='delete' >Delete </button>
     ";
     })
     ->make(true);
@@ -65,11 +65,9 @@ public function delete($id){
   $rooms_in_floor=$rooms->where('floor_id',$id);
   if (sizeof($rooms_in_floor)!=0)
   {
-    return view('floors.index',[
-      'errors' => "This Floor Has Room You Can't Delete it"
-    ]);
+    return redirect()->back()->with('alert', 'Sorry ! you cant delete this floor , it has rooms ');
   }
   Floor::destroy($id);
-  return redirect('floors');
-  }       
+  
+  } 
 }

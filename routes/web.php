@@ -62,7 +62,7 @@ Route::get('floors/create','FloorsController@create');
 Route::post('floors','FloorsController@store');
 Route::get('floors/{id}/edit','FloorsController@edit');
 Route::patch('floors/{id}','FloorsController@update');
-Route::get('floors/{id}', 'FloorsController@delete');
+Route::delete('floors/{id}', 'FloorsController@delete');
 
 /*____________________________________
 #### Rooms Routes #################
@@ -73,5 +73,5 @@ Route::get('rooms/create','RoomsController@create');
 Route::post('rooms','RoomsController@store');
 Route::get('rooms/{id}/edit','RoomsController@edit');
 Route::patch('rooms/{id}','RoomsController@update');
-Route::get('rooms/{id}', 'RoomsController@delete');
+Route::delete('rooms/{id}','RoomsController@delete');
 

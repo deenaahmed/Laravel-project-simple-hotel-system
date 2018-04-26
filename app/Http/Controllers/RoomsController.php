@@ -12,9 +12,6 @@ use App\User;
 class RoomsController extends Controller
 {
 public function index(){
-    //$rooms =Room::with('floor','user')->get();
-    //return view('rooms.index');
-    //return $rooms; 
     return view('rooms.index',[
       'errors' => '',
     ]);
@@ -25,8 +22,8 @@ public function getdatatable(){
     $rooms =Room::with('floor','user')->get();
     return datatables()->of($rooms)
     ->addColumn('action', function ($data) {
-    return "<a class='btn btn-xs btn-primary' href='/rooms/$data->id/edit'>Edit</a> 
-    <a class='btn btn-xs btn-danger delete ' csrf_token() id='delete' post='$data->id' href='/rooms/$data->id'>Delete </a>
+    return "<button class='btn btn-xs btn-primary' href='/rooms/$data->id/edit'>Edit</button> 
+    <button class='btn btn-xs btn-danger delete ' csrf_token() id='delete' room='$data->id'>Delete </a>
     ";
    })
     ->make(true);
@@ -70,7 +67,7 @@ Room::where('id',$request->id)->update([
   'price'=>$request->price,
   'floor_id'=> $request->floor,
   'user_id'=> $request->user,
-  'isavailable'=> 'yes',    
+  'isavailable'=> '1',    
 ]);
 return redirect('rooms');
 
@@ -78,12 +75,9 @@ return redirect('rooms');
   public function delete($id){
     $room=Room::find($id);
     if ($room->isavailable=="yes"){
-      return view('rooms.index',[
-        'errors' => "Cant delete,this room is reserved"
-      ]);
+      return redirect()->back()->with('alert', 'Sorry ! you cant delete this room , it is reserved ');
     }
-    Room::destroy($id);
-    return redirect('rooms');
+  Room::destroy($id);
     }     
 
 }

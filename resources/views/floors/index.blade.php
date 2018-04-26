@@ -2,15 +2,11 @@
 
 @section('content')
 
-
-@if ($errors != '')
-<div class="alert alert-danger">
-        <ul>
-                <li>{{ $errors }}</li>
-        </ul>
+@if (session('alert'))
+    <div class="alert alert-danger">
+        {{ session('alert') }}
     </div>
-    @endif
-
+@endif
 
 <br>
 <br>
@@ -18,6 +14,9 @@
 
 <br>
 <br>
+{{csrf_field()}}
+<input type="hidden" name="_method" value="DELETE">
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
 <table id="users-table" class="table">
 <thead>
     <tr>
@@ -51,21 +50,25 @@
 <script>
 $( document ).ready(function(){
 $(document).on("click", ".delete", function() {
-console.log("/floors/"+$(this).attr('post'))
+console.log("/floors/"+$(this).attr('floor'))
 var line=$(this).parent().parent()
  if (confirm("Sure to delete?")) {
    $.ajax({
-       url: "/floors/"+$(this).attr('post'),
+       url: "/floors/"+$(this).attr('floor'),
         type: 'DELETE',
         data : {'_token' : '{{csrf_token()}}'},
             success: function(result){
-                line.remove();
+               line.remove();
+                //console.log(Respone);
+                window.location.href="floors"
             },
             error: function(err){
-                console.log(err);
+               // console.log(err);
+               window.location.href="floors"
             }
     });
   }
+  
 });
 }); </script>
  @endsection
