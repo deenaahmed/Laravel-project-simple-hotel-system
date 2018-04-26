@@ -22,7 +22,7 @@ public function getdatatable(){
     $rooms =Room::with('floor','user')->get();
     return datatables()->of($rooms)
     ->addColumn('action', function ($data) {
-    return "<button class='btn btn-xs btn-primary' href='/rooms/$data->id/edit'>Edit</button> 
+    return "<a class='btn btn-xs btn-primary' href='/rooms/$data->id/edit'>Edit</a> 
     <button class='btn btn-xs btn-danger delete ' csrf_token() id='delete' room='$data->id'>Delete </a>
     ";
    })
@@ -39,7 +39,6 @@ public function create(){
   }
   
 public function store(StoreRoomRequest $request){
- 
   $image = $request->file('image');
   $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
   $destinationPath = public_path('/room_images');

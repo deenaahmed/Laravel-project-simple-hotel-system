@@ -98,3 +98,7 @@ Route::get('rooms/{id}/edit','RoomsController@edit');
 Route::patch('rooms/{id}','RoomsController@update');
 Route::delete('rooms/{id}','RoomsController@delete');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

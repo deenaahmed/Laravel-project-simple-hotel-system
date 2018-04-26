@@ -17,10 +17,8 @@ class Room extends Model
     }
 
     public function user() {
-     //   return $this ->belongsTo(User::class);
-
-     //   return $this->belongsToMany(User::class);
-    return $this->belongsToMany(User::class,'reservations')->withPivot('user_id', 'room_id','clientpaidprice','created_at','updated_at');
+       return $this->belongsTo(User::class);
+  //  return $this->belongsToMany(User::class,'reservations')->withPivot('user_id', 'room_id','clientpaidprice','created_at','updated_at');
 
     }
     public function getPriceAttribute($value)
