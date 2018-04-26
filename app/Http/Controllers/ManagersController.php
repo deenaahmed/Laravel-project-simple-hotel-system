@@ -8,6 +8,8 @@ use Illuminate\Http\File;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Storage;
+use Yajra\Datatables\Datatables;
+
 
 
 class ManagersController extends Controller
@@ -17,13 +19,30 @@ class ManagersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    /**
+     * Process datatables ajax request.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+
     public function index()
     {
-        $managers = User::where('type', '=', 2)->paginate(2);
-        return view('managers.index',[
+        // $managers = User::where('name', '=', 'manager')->paginate(2);
+        return view('managers.index'); 
+   }
+   public function getdata()
+    {
+          
+        return Datatables::of(User::query())
+        ->addColumn('action', function($query){
+        $ret =  "<a href='managers/" . $query->id . "/edit' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>";
+         $ret .= "<button type='button' target='".$query->id."'  class='delete btn-xs btn btn-danger' > DELETE </button>";
+            return $ret;
+    })->rawcolumns(['action']) ->make(true);
 
-            'managers' => $managers
-        ]);
     }
 
     /**
@@ -33,7 +52,7 @@ class ManagersController extends Controller
      */
     public function create()
     {
-        $admins = User::where('type', '=', 1);
+        $admins = User::where('name', '=', 'manager');
         return view('managers.create',[
             'admins' => $admins
         ]);
@@ -60,7 +79,6 @@ class ManagersController extends Controller
                 'password' => $request->password,
                 'national_id' => $request->national_id,
                 'avatar_image' => $path,
-                'type' => 2,
             ]);
 
        return redirect(route('managers.index'));
@@ -109,7 +127,6 @@ class ManagersController extends Controller
                 'name' => $request->name,
 				'email' => $request->email,
                 'national_id' => $request->national_id,
-                'type' => 2,
         ]);
         }
         else{
@@ -121,7 +138,6 @@ class ManagersController extends Controller
                     'email' => $request->email,
                     'avatar_image' => $path,
                     'national_id' => $request->national_id,
-                    'type' => 2,
             ]);
         }
         

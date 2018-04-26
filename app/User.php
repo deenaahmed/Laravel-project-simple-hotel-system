@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    protected $table_id="datatables_data";
     use Notifiable;
     
 
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','avatar_image','national_id','type'
+        'name', 'email', 'password','avatar_image','national_id'
     ];
 
     

@@ -8,6 +8,7 @@ use Illuminate\Http\File;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Storage;
+use Yajra\Datatables\Datatables;
 
 class ReceptionistsController extends Controller
 {
@@ -18,11 +19,18 @@ class ReceptionistsController extends Controller
      */
     public function index()
     {
-        $receps = User::where('type', '=', 3)->paginate(2);
-        return view('receptionists.index',[
+        return view('receptionists.index');
+    }
+    public function getdata()
+    {
+          
+        return Datatables::of(User::query())
+        ->addColumn('action', function($query){
+        $ret =  "<a href='receptionists/" . $query->id . "/edit' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>";
+         $ret .= "<button type='button' target='".$query->id."'  class='delete btn-xs btn btn-danger' > DELETE </button>";
+            return $ret;
+    })->rawcolumns(['action']) ->make(true);
 
-            'receps' => $receps
-        ]);
     }
 
     /**
