@@ -15,11 +15,8 @@ class Reservation extends Model
         'user_id',
         'room_number',
         'room_id',
-        
-       
-        
-        
     ];
+
 
 
      public function user()
@@ -27,11 +24,19 @@ class Reservation extends Model
         //User::class == 'App\User'
         return $this->belongsTo(User::class);
      }
-     public function room()
-     {
-    //     //User::class == 'App\User'
-         return $this->belongsTo(Room::class);
-     }
+    //  public function room()
+    //  {
+    // //     //User::class == 'App\User'
+    //      return $this->belongsTo(Room::class);
+    //  }
     
+
+public function room()
+{
+    $this->hasOne('App\Room');
+
+}
+
+
 
 }
