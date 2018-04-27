@@ -32,9 +32,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href={{ route('client.reservations.index')}}>My Resrvation</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">My Profile</a>
-                </li>
+                    @hasanyrole('manager|admin|receptionist')
+                        <li class="nav-item">
+                         <a class="nav-link" href="/managers">Dashboard</a>
+                         </li>
+                    @endhasrole
 
                     @endif
             </ul>

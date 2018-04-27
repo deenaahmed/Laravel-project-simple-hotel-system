@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Notifications\WelcomeBack;
 use Illuminate\Console\Command;
 use App\User;
+use Carbon\Carbon;
 
 class Checklogin extends Command
 {
@@ -41,19 +42,24 @@ class Checklogin extends Command
     {
       // \Log::info('iam here @'.\Carbon\Carbon::now());
 
-//        $users=User::all();
-//
-//        foreach ($users as $user)
-//        {
-//
-//
-//
-//            $user->notify(new WelcomeBack($user->name ,'30 day'));
-//
-//
-//
-//        }
-        dd(\Carbon\Carbon::now()->timestamp  - \Carbon\Carbon::now()->timestamp);
+        $users=User::all();
+
+        foreach ($users as $user)
+        {
+           $now= Carbon::now()->timestamp ;
+           $lastlogin=$user->last_login;
+          $duration=$now-$lastlogin;
+          $days=$duration/(60 * 60 * 24);
+
+       if( $days>30)
+             {
+              $user->notify(new WelcomeBack($user->name ,'30 day'));
+
+             }
+
+
+        }
+
 
 
 
