@@ -23,8 +23,8 @@
 
     <tr>
       <td scope="row">{{ $info->id }}</td>
-      <td>{{ $info->user['name'] }}</td>
-      <td>{{$info->user['nationalid']}}</td>
+      <td>{{ $info->user->name }}</td>
+      <td>{{ $info->user->national_id }}</td>
       <td>{{ $info->room['number'] }}</td>
       <td>{{ $info->clientpaidprice }}</td>
      

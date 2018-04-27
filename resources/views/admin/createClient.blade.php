@@ -18,11 +18,11 @@ user name :- <input type="text" name="name" />
 Email :- <input type="text" name="email" />
 <br/><br/>
                           
-  <select name="gender">
-                                    <option value="" selected disabled>Please select gender</option>
-                                    <option value="male">male</option>
-                                    <option value="female">female</option>
-                                </select>
+<select name="gender">
+<option value="" selected disabled>Please select gender</option>
+<option value="male">male</option>
+<option value="female">female</option>
+</select>
 
 <br/>
 <br/>

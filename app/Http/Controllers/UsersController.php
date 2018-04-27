@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Reservation;
 use App\User;
 use Auth;
+use URL;
 
 class UsersController extends Controller
 {// receptionist 
@@ -23,6 +24,7 @@ class UsersController extends Controller
 
     }
     public function approvedClients(Request $request){
+       // dd(auth::user());
     	$approved=User::where('is_approved','=',1)->where('approved_by','=',$request->user()->id)->get();
     	return view('receptionist.approvedClients',['approved'=> $approved]);
 
@@ -30,13 +32,17 @@ class UsersController extends Controller
     public function reservations(Request $request){
     	$array_of_clients = array();
     	$clients = User::where('approved_by','=',$request->user()->id)->get();
-    	//dd($clients->id);
+    	//dd($clients);
     	foreach ($clients as $client) {
     		# code...php
     	
     	    	$reservations = Reservation::where('user_id','=',$client->id)->first();
+                if($reservations!=NULL)
+                {
     	    	array_push($array_of_clients, $reservations);
+            }
     	}
+        //dd($array_of_clients[0]->user->national_id);
     
     	return view('receptionist.reservations',['reservations'=> $array_of_clients]);
     }
@@ -70,18 +76,15 @@ class UsersController extends Controller
 
     public function storeClient(Request $request)
     {
+         if(!($request->file('image'))){
+        $name='CdrEZNHmbxwUlGq8srjxun3mnCHA7slWrBrRXuls.png';
+           // dd(URL::asset('/storage/clients/images/CdrEZNHmbxwUlGq8srjxun3mnCHA7slWrBrRXuls.png'));
+         }else{
+        //dd($request->file('image'));
         $image = $request->file('image')->store('public/clients/images');
         //dd($image);
          $name = $request->file('image')->hashName();
-        //$request->file('image')->store('image');
-        // $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
-        //$destinationPath = public_path('/clients/images');
-       // $image->move($destinationPath, $image);
-
-        //$request->file('image')->store('public/clients/images');
-            // save image name in data base
-            
-         //dd($request->all());
+        }
         User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -105,14 +108,16 @@ class UsersController extends Controller
 
     public function updateClient($id,Request $request){
         //$post = Post::find($id);
-       
+       $image = $request->file('image')->store('public/clients/images');
+        //dd($image);
+         $name = $request->file('image')->hashName();
 
         User::find($id)->update(['name'=>$request->name,
             'email' => $request->email,
-            'avatar_image' => $request->image,
+            'avatar_image' => $name,
             'country' => $request->country,
             'gender' => $request->gender,
-            'password' => $request->password]);
+            'password' => Hash::make($request->password)]);
         return redirect('/admin/clients');
 
 }

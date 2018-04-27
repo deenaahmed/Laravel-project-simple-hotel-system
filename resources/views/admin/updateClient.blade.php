@@ -9,7 +9,7 @@
 @endif
 <h2>Add client</h2>
 
-<form method="post" action='{{ '/admin/clients/'.$user->id }}'" >
+<form method="post" action="{{ '/admin/clients/'.$user->id }}" enctype="multipart/form-data">
 <?php echo method_field('PUT') ?>
 
 {{csrf_field()}}
