@@ -15,11 +15,14 @@ class Reservation extends Model
         'user_id',
         'room_number',
         'room_id',
-        
-       
-        
-        
     ];
+
+
+public function room()
+{
+    $this->hasOne('App\Room');
+
+}
 
 
 }

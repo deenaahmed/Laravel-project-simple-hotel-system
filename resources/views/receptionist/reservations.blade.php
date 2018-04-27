@@ -27,7 +27,6 @@
       <td>{{$info->user['nationalid']}}</td>
       <td>{{ $info->room['number'] }}</td>
       <td>{{ $info->clientpaidprice }}</td>
-     
       </tr>
       @endforeach
       </tbody>

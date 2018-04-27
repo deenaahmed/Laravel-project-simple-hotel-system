@@ -72,6 +72,8 @@
                     <h4 class="card-title">
                         <a href="{{route('rooms.show',$room->id)}}">ROOM Number {{$room->number}}</a>
                     </h4>
+
+                    <h5 style="color: green">Capacity {{$room->capacity}}</h5>
                     <h5 style="color: red">${{$room->price}}</h5>
                 </div>
                 <div class="card-footer">
@@ -86,14 +88,17 @@
 
         <!-- /.row -->
 
-
+        {{ $rooms->links() }}
+    </div>
 
     </div>
     <!-- /.col-lg-9 -->
 
-</div>
 <!-- /.row -->
+
 </div>
+
+
 <!-- /.container -->
 
 @stop
