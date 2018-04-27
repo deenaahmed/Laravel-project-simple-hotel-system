@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Notifications\WelcomeBack;
 use Illuminate\Console\Command;
+use App\User;
 
 class Checklogin extends Command
 {
@@ -37,7 +39,23 @@ class Checklogin extends Command
      */
     public function handle()
     {
-       \Log::info('iam here @'.\Carbon\Carbon::now());
+      // \Log::info('iam here @'.\Carbon\Carbon::now());
+
+//        $users=User::all();
+//
+//        foreach ($users as $user)
+//        {
+//
+//
+//
+//            $user->notify(new WelcomeBack($user->name ,'30 day'));
+//
+//
+//
+//        }
+        dd(\Carbon\Carbon::now()->timestamp  - \Carbon\Carbon::now()->timestamp);
+
+
 
     }
 }

@@ -46,13 +46,13 @@ class WelcomeBack extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('welcome Mr '.$this->name .'you havenot visit our website for '.$this->time)
+                    ->line('welcome Mr '.$this->name .'you havenot visit our website for '.$this->time . 'miss you ')
                     ->action('Go to your website', url('http://hotel.local'))
                     ->line('Thank you for Beeing our customer!');
     }
 
 
-    /**
+    /**m
      * Get the array representation of the notification.
      *
      * @param  mixed  $notifiable
