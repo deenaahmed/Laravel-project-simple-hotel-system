@@ -41,9 +41,9 @@ $(function() {
             @hasrole('admin')
             { data: 'national_id', name: 'national_id' },
             { data: 'user.name', name: 'creator' },
-            { data: 'action', name: 'action', orderable: false, searchable: false }
             @else
             @endhasrole
+            { data: 'action', name: 'action', orderable: false, searchable: false }
         ]
     });
 });

@@ -30,9 +30,13 @@ class ReceptionistsController extends Controller
     }
     public function getdata()
     {
+        
         $respe = User::role('receptionist')->with('user')->get();
         return Datatables::of($respe)
         ->addColumn('action', function($respe){
+        $userr=Auth::user();
+        $id=$userr->id;
+        if($userr->hasRole('manager') && ($id==$respe->creator)){
         $ret =  "<a href='receptionists/" . $respe->id . "/edit' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>";
         $ret .= "<button type='button' target='".$respe->id."'  class='delete btn-xs btn btn-danger' > Delete </button>";
         if($respe->banned_at==null){
@@ -40,6 +44,20 @@ class ReceptionistsController extends Controller
         }
         else{
         $ret .= "<button type='button' id='BanButton' status='unban' targetban='".$respe->id."'  class='ban btn-xs btn-primary' > Un Ban </button>";
+        }
+        }
+        else if($userr->hasRole('admin')){
+        $ret =  "<a href='receptionists/" . $respe->id . "/edit' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>";
+        $ret .= "<button type='button' target='".$respe->id."'  class='delete btn-xs btn btn-danger' > Delete </button>";
+        if($respe->banned_at==null){
+        $ret .= "<button type='button' id='BanButton' status='unban' targetban='".$respe->id."'  class='ban btn-xs btn-primary' > Ban </button>";
+        }
+        else{
+        $ret .= "<button type='button' id='BanButton' status='unban' targetban='".$respe->id."'  class='ban btn-xs btn-primary' > Un Ban </button>";
+        }
+        }
+        else{
+            $ret="";   
         }
         return $ret;
     })->rawcolumns(['action']) ->make(true);
