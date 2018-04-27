@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('floors','api\FloorsController@store');
+Route::get('floors','api\FloorsController@index')->middleware('jwt.auth');
+
+Route::middleware('jwt.auth')->get('users', function(Request $request) {
+    return auth()->user();
 });

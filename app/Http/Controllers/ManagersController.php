@@ -8,6 +8,10 @@ use Illuminate\Http\File;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Storage;
+use Yajra\Datatables\Datatables;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 
 
 class ManagersController extends Controller
@@ -17,13 +21,29 @@ class ManagersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    /**
+     * Process datatables ajax request.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+
     public function index()
     {
-        $managers = User::where('type', '=', 2)->paginate(2);
-        return view('managers.index',[
-
-            'managers' => $managers
-        ]);
+        // $managers = User::where('name', '=', 'manager')->paginate(2);
+        return view('managers.index'); 
+   }
+   public function getdata()
+    {    
+        $respe = User::role('manager')->get();
+        return Datatables::of($respe)
+        ->addColumn('action', function($respe){
+        $ret =  "<a href='managers/" . $respe->id . "/edit' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>";
+         $ret .= "<button type='button' target='".$respe->id."'  class='delete btn-xs btn btn-danger' > DELETE </button>";
+            return $ret;
+    })->rawcolumns(['action']) ->make(true);
     }
 
     /**
@@ -33,7 +53,7 @@ class ManagersController extends Controller
      */
     public function create()
     {
-        $admins = User::where('type', '=', 1);
+        $admins = User::where('name', '=', 'manager');
         return view('managers.create',[
             'admins' => $admins
         ]);
@@ -54,14 +74,14 @@ class ManagersController extends Controller
         $path = Storage::putFile('avatars2', $request->file('avatar_image'));
         }
         Storage::setVisibility($path, 'public');
-			User::create([
+			$manager=User::create([
 				'name' => $request->name,
 				'email' => $request->email,
-                'password' => $request->password,
+                'password' => bcrypt($request->password),
                 'national_id' => $request->national_id,
                 'avatar_image' => $path,
-                'type' => 2,
             ]);
+            $manager->assignRole('manager');
 
        return redirect(route('managers.index'));
     }
@@ -109,7 +129,6 @@ class ManagersController extends Controller
                 'name' => $request->name,
 				'email' => $request->email,
                 'national_id' => $request->national_id,
-                'type' => 2,
         ]);
         }
         else{
@@ -121,7 +140,6 @@ class ManagersController extends Controller
                     'email' => $request->email,
                     'avatar_image' => $path,
                     'national_id' => $request->national_id,
-                    'type' => 2,
             ]);
         }
         

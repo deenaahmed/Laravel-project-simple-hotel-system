@@ -1,4 +1,4 @@
-@extends('admin.admin_template')
+@extends('layouts.base')
 @section('content')
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -15,7 +15,7 @@
 Name :- <input type="text" name="name" placeholder="Enter the Receptionist name">
 <br>
 <br>
-Email :- <input type="text" name="email" placeholder="Enter the Receptionist email">
+Email :- <input type="email" name="email" placeholder="Enter the Receptionist email">
 <br>
 <br>
 National ID :- <input type="text" name="national_id" placeholder="Enter the receptionist national id">

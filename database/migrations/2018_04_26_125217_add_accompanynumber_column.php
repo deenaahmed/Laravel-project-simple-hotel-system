@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsertypesTable extends Migration
+class AddAccompanynumberColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateUsertypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('usertypes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_type'); //foreign key for type in user table
-            $table->string('user_role');
-            $table->timestamps();
+        Schema::table('reservations', function (Blueprint $table) {
+            //
+            $table->integer('accompanynumber');
         });
     }
 
@@ -28,6 +26,10 @@ class CreateUsertypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usertypes');
+        Schema::table('reservations', function (Blueprint $table) {
+            //
+
+            $table->dropColumn('accompanynumber');
+        });
     }
 }

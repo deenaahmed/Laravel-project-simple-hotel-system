@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -25,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/'; //add from diaa
 
     /**
      * Create a new controller instance.
@@ -36,4 +37,38 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+    protected function authenticated(Request $request, $user)
+    {
+        //
+
+        if($user->hasRole('client')) {
+
+        if ($user->is_approved == 0) {
+
+            $message = 'Your account is still pending !!';
+
+            // Log the user out.
+            $this->logout($request);
+
+            // Return them to the log in form.
+            return redirect()->back()
+                ->withInput($request->only($this->username(), 'remember'))
+                ->withErrors([
+                    // This is where we are providing the error message.
+                    $this->username() => $message,
+                ]);
+        }
+    }
+
+
+
+
+    }
+
+
+
+
+
 }

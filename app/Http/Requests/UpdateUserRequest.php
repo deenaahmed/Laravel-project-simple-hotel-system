@@ -24,9 +24,9 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'national_id'=>'required|unique:users',
-            'email'=>'required|unique:users',
-            'password'=>'required|min:6',
+            'national_id'=>'unique:users,national_id,'. $this->id, 
+            'email'=>'unique:users,email,'. $this->id,
+            'password'=>'min:6',
             'creator' => 'exists:users,id',
             'avatar_image' => 'mimes:jpeg,jpg',
             ];

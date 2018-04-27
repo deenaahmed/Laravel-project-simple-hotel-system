@@ -239,3 +239,10 @@
 <script src="{{ asset ("/dist/js/pages/dashboard.js") }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset ("/dist/js/demo.js") }}"></script>
+<!-- <script type="text/javascript" charset="utf8" scr="{{ asset ("https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js") }}"></script> -->
+<!-- <script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script> -->
+<script src="https://code.jquery.com/jquery.js"></script>
+        <!-- DataTables -->
+        <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
