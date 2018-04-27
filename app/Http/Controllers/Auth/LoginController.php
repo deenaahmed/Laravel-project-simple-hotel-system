@@ -44,6 +44,7 @@ class LoginController extends Controller
         //
 
         if($user->hasRole('client')) {
+
         if ($user->is_approved == 0) {
 
             $message = 'Your account is still pending !!';

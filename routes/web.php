@@ -18,10 +18,13 @@ use Spatie\Permission\Models\Permission;
 Diaa Section 
 
 */
-Route::get('ERROR' , 'Controller@index'); ///error page
 Route::get('/' , 'clients\ClientReservationController@index')->name('client.home');
 Route::resource('/reservations/rooms', 'clients\ClientReservationController')->except([
     'index']);
+
+Route::get('/client/reservations/{id}' , 'clients\LastClientReservation@show')->name('client.reservations');
+Route::get('/client/reservations/' , 'clients\LastClientReservation@index')->name('client.reservations.index');
+
 
 
 /*
@@ -48,7 +51,7 @@ Deena Section
 
 
 */
-
+Route::get('ERROR' , 'Controller@index'); ///error page
 Route::get(
     'managers',
     'ManagersController@index'
@@ -87,6 +90,7 @@ Route::get('floors/{id}/edit','FloorsController@edit')->middleware('auth','role:
 Route::patch('floors/{id}','FloorsController@update')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::delete('floors/{id}', 'FloorsController@delete')->middleware('auth','role:admin|manager','forbid-banned-user');
 
+
 /*____________________________________
 #### Rooms Routes #################
 */
@@ -97,6 +101,7 @@ Route::post('rooms','RoomsController@store')->middleware('auth','role:admin|mana
 Route::get('rooms/{id}/edit','RoomsController@edit')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::patch('rooms/{id}','RoomsController@update')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::delete('rooms/{id}','RoomsController@delete')->middleware('auth','role:admin|manager','forbid-banned-user');
+
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

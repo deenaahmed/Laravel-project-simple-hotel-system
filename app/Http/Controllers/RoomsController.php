@@ -12,9 +12,7 @@ use App\User;
 class RoomsController extends Controller
 {
 public function index(){
-    return view('rooms.index',[
-      'errors' => '',
-    ]);
+    return view('rooms.index');
 }
 
 public function getdatatable(){
@@ -22,9 +20,9 @@ public function getdatatable(){
     $rooms =Room::with('floor','user')->get();
     return datatables()->of($rooms)
     ->addColumn('action', function ($data) {
-    return "<button class='btn btn-xs btn-primary' href='/rooms/$data->id/edit'>Edit</button> 
+    return "<a class='btn btn-xs btn-primary' href='/rooms/$data->id/edit'>Edit</a> 
     <button class='btn btn-xs btn-danger delete ' csrf_token() id='delete' room='$data->id'>Delete </a>
-    ";
+    "; 
    })
     ->make(true);
   } 
@@ -39,7 +37,6 @@ public function create(){
   }
   
 public function store(StoreRoomRequest $request){
- 
   $image = $request->file('image');
   $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
   $destinationPath = public_path('/room_images');
@@ -51,7 +48,7 @@ public function store(StoreRoomRequest $request){
       'price'=>$request->price,
       'floor_id'=> $request->floor,
       'user_id'=> $request->user,
-      'isavailable'=> 'yes',
+      'isavailable'=> '0',
       'image'=> $input['imagename']
          ]);
     return redirect('rooms');
@@ -74,14 +71,15 @@ Room::where('id',$request->id)->update([
   'price'=>$request->price,
   'floor_id'=> $request->floor,
   'user_id'=> $request->user,
-  'isavailable'=> '1',    
+  'isavailable'=> '0',  
+  //'image'=> $input['imagename']  
 ]);
 return redirect('rooms');
 
   }
   public function delete($id){
     $room=Room::find($id);
-    if ($room->isavailable=="yes"){
+    if ($room->isavailable=="1"){
       return redirect()->back()->with('alert', 'Sorry ! you cant delete this room , it is reserved ');
     }
   Room::destroy($id);

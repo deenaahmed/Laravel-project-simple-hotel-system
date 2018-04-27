@@ -31,7 +31,7 @@ class ClientReservationController extends Controller
     public function index()
     {
         //
-        $rooms=Room::where('isavailable','true')->get();
+        $rooms=Room::where('isavailable','true')->paginate(1);
         return view('client.index',compact('rooms'));
     }
 
@@ -69,6 +69,9 @@ class ClientReservationController extends Controller
     public function show($id)
     {
         //
+
+        echo "iam show page";
+
 
 
     }
@@ -127,7 +130,7 @@ try {
 
         // in case success insert the booking in our  databse
         $user=Auth::user();
-        $user->rooms()->save( $room,['clientpaidprice'=>$room->price]);
+        $user->rooms()->save( $room,['clientpaidprice'=>$room->price ,'accompanynumber'=>$accompany]);
         $room->isavailable='false';
         $room->save();
 

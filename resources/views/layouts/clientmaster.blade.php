@@ -25,16 +25,18 @@
             <ul class="navbar-nav ml-auto">
                 @if(Auth::user())
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
+                    <a class="nav-link" href="{{route('client.home')}}">Home
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Resrvation</a>
+                    <a class="nav-link" href={{ route('client.reservations.index')}}>My Resrvation</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">My Profile</a>
-                </li>
+                    @hasanyrole('manager|admin|receptionist')
+                        <li class="nav-item">
+                         <a class="nav-link" href="/managers">Dashboard</a>
+                         </li>
+                    @endhasrole
 
                     @endif
             </ul>
