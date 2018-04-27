@@ -4,9 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-
-    "content-hash": "7481882c327c54d57bc1084eb78826cb",
-
+    "content-hash": "cf26a740bec73fb468168e94383b421f",
     "packages": [
         {
             "name": "alfa6661/laravel-autonumber",
@@ -4197,8 +4195,6 @@
             "time": "2016-09-01T10:05:43+00:00"
         },
         {
-<<<<<<< HEAD
-=======
             "name": "yajra/laravel-datatables",
             "version": "v1.0.0",
             "source": {
@@ -4425,7 +4421,6 @@
             "time": "2018-03-16T01:32:45+00:00"
         },
         {
->>>>>>> 68c6740c2a2a7a6bb8b96df278347decad887246
             "name": "yajra/laravel-datatables-oracle",
             "version": "v8.4.3",
             "source": {
@@ -4495,8 +4490,6 @@
                 "laravel"
             ],
             "time": "2018-04-05T14:51:57+00:00"
-<<<<<<< HEAD
-=======
         },
         {
             "name": "yiisoft/jquery",
@@ -4723,7 +4716,6 @@
                 "yii2"
             ],
             "time": "2018-03-21T16:15:55+00:00"
->>>>>>> 68c6740c2a2a7a6bb8b96df278347decad887246
         }
     ],
     "packages-dev": [
