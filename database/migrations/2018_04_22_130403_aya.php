@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFloorsTable extends Migration
+class Aya extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateFloorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('floors', function (Blueprint $table) {
+        Schema::create('user_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('number');
-            $table->string('name');
-            $table->integer('user_id'); // foreign key from the manager table
+            $table->integer('usertype'); //foreign key for type in user table
+            $table->string('userrole');
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.
@@ -29,6 +29,6 @@ class CreateFloorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('floors');
+        Schema::dropIfExists('user_type');
     }
 }

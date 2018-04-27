@@ -41,9 +41,6 @@ class User extends Authenticatable implements BannableContract
         'password', 'remember_token',
     ];
 
-
-
-
     // relation many to many
 
     public function rooms()
