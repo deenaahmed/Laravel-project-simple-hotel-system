@@ -1,7 +1,9 @@
-<!DOCTYPE html>
-<html>
+@extends('admin.admin_template')
 
-<body>
+@section('content')
+
+
+
 <h1>Manage Clients</h1>
 <button onclick="location.href='{{ url('/receptionist') }}'">Home</button>
 <table class="table">
@@ -40,5 +42,4 @@
       </tbody>
       </table>
 
-</body>
-</html>
+@endsection

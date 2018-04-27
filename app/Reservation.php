@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Reservation extends Model
 {
 
+
 	protected $fillable = [
 		
 		'status',
@@ -20,6 +21,7 @@ class Reservation extends Model
         
     ];
 
+
      public function user()
      {
         //User::class == 'App\User'
@@ -31,4 +33,5 @@ class Reservation extends Model
          return $this->belongsTo(Room::class);
      }
     
+
 }
