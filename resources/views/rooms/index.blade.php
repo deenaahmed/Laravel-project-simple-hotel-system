@@ -7,8 +7,6 @@
     </div>
 @endif
 
-<br>
-<br>
    <button type="button" class="btn btn-success" onclick="window.location.href='rooms/create'" >Create Room</button>
 
 <br>
@@ -19,7 +17,7 @@
 
     <td>Number </td>
     <td>capacity </td>
-    <td>price</td>
+    <td>price($)</td>
     <td> Floor Name </td>
     <td> Manger Name </td>
     <td id="actions"> Actions  </td>
@@ -62,11 +60,13 @@ var line=$(this).parent().parent()
             },
             error: function(err){
                 window.location.href="rooms"
-
             }
     });
   }
 });
-}); </script>
+}); 
+</script>
+
+
 
 @endsection

@@ -18,7 +18,7 @@
 <form method="post" action="/rooms/{{$room->id}}" > 
 
 {{csrf_field()}}
-<input type="hidden" name="_method" value="PATCH">
+<input type="hidden" name="_method" value="PUT">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
   <div class="form-group">
@@ -33,7 +33,7 @@
 
 
     <div class="form-group">
-    <label>Room Price</label>
+    <label>Room Price ($) </label>
     <input type="text" name="price" class="form-control"  value={{$room->price}}>
   </div>
 
@@ -55,6 +55,14 @@
 @endforeach
     </select>
 
+    </div>
+
+<br>
+    <label >Room Image </label>
+
+<input type="file" name="image" class="form-control" />
+<br>
+<br>
   <button type="submit" class="btn btn-success">Submit</button>
  
 </form>

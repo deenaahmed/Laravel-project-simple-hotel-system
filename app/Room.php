@@ -21,10 +21,14 @@ class Room extends Model
   //  return $this->belongsToMany(User::class,'reservations')->withPivot('user_id', 'room_id','clientpaidprice','created_at','updated_at');
 
     }
+    
     public function getPriceAttribute($value)
     {
         return ($value/100);
     }
+
+public function setPriceAttribute($value)
+    {
+        $this->attributes['price']=($value*100);
+    }
 }
-
-

@@ -8,8 +8,6 @@
     </div>
 @endif
 
-<br>
-<br>
    <button type="button" class="btn btn-success" onclick="window.location.href='floors/create'" >Create Floor</button>
 
 <br>
@@ -20,7 +18,6 @@
 <table id="users-table" class="table">
 <thead>
     <tr>
-    <td>Id</td>
     <td>Number </td>
     <td>Name </td>
     <td> Manger </td>
@@ -37,7 +34,6 @@
             ajax: 'http://localhost:8000/floors/getdatatable' ,
             data : {'_token' : '{{csrf_token()}}'},
             columns: [
-            {data: 'id'},
             {data: 'number'},
             {data: 'name'}, 
             {data: 'user.name'},  

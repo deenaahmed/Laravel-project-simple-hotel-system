@@ -21,7 +21,7 @@
 <form method="post" action="/floors/{{$floor->id}}" > 
 
 {{csrf_field()}}
-<input type="hidden" name="_method" value="PATCH">
+<input type="hidden" name="_method" value="PUT">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
   <div class="form-group">

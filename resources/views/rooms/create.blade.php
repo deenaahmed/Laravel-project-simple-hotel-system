@@ -29,8 +29,8 @@
   </div>
 
     <div class="form-group">
-    <label>Room Price</label>
-    <input type="text" name="price" class="form-control"  placeholder="Room Price">
+    <label>Room Price($) </label>
+    <input type="text" name="price" class="form-control"  placeholder="Room Price ">
   </div>
 
 <div class="form-group">
@@ -55,7 +55,11 @@
   </div>
 
   <br>
- Image: <input type="file" name="image" class="form-control" />
+  <label >Room Image </label>
+
+ <input type="file" name="image" class="form-control" />
+ <br>
+ <br>
   <button type="submit" class="btn btn-success">Submit</button>
 </form>
 

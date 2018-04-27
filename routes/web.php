@@ -84,7 +84,7 @@ Route::get('floors/getdatatable','FloorsController@getdatatable');
 Route::get('floors/create','FloorsController@create');
 Route::post('floors','FloorsController@store');
 Route::get('floors/{id}/edit','FloorsController@edit');
-Route::patch('floors/{id}','FloorsController@update');
+Route::put('floors/{id}','FloorsController@update');
 Route::delete('floors/{id}', 'FloorsController@delete');
 
 /*____________________________________
@@ -95,10 +95,10 @@ Route::get('rooms/getdatatable','RoomsController@getdatatable');
 Route::get('rooms/create','RoomsController@create');
 Route::post('rooms','RoomsController@store');
 Route::get('rooms/{id}/edit','RoomsController@edit');
-Route::patch('rooms/{id}','RoomsController@update');
+Route::put('rooms/{id}','RoomsController@update');
 Route::delete('rooms/{id}','RoomsController@delete');
 
 
-Auth::routes();
 
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
