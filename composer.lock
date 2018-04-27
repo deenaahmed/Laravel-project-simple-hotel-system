@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b57fc8c0a8caf3a61e0885d5a44f8255",
+    "content-hash": "cf26a740bec73fb468168e94383b421f",
     "packages": [
         {
             "name": "alfa6661/laravel-autonumber",
@@ -4971,7 +4971,7 @@
             ],
             "authors": [
                 {
-                    "name": "Padraic Brady",
+                    "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 },
