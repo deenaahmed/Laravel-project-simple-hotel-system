@@ -1,3 +1,4 @@
+
 @extends('layouts.base')
 @section('content')
 <button type="button" class="btn btn-success"  onclick="location.href = '/receptionists/create';">Add a new Receptionist </button>
@@ -6,10 +7,10 @@
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Receptionist Name</th>
-      @hasrole('admin')
       <th scope="col">Receptionist Email</th>
-      <th scope="col">Receptionist National ID</th>
       <th scope="col">Receptionist created at</th>
+      @hasrole('admin')
+      <th scope="col">Receptionist National ID</th>
       <th scope="col">Added by</th>
       @else
     @endhasrole
@@ -36,13 +37,13 @@ $(function() {
             { data: 'id', name: 'id' },
             { data: 'name', name: 'name' },
             { data: 'email', name: 'email' },
+            { data: 'created_at', name: 'created_at' },
             @hasrole('admin')
             { data: 'national_id', name: 'national_id' },
-            { data: 'created_at', name: 'created_at' },
-            { data: 'creator', name: 'creator' },
+            { data: 'user.name', name: 'creator' },
+            { data: 'action', name: 'action', orderable: false, searchable: false }
             @else
             @endhasrole
-            { data: 'action', name: 'action', orderable: false, searchable: false }
         ]
     });
 });

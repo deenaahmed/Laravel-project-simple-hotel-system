@@ -27,7 +27,7 @@ class User extends Authenticatable implements BannableContract
      */
     protected $fillable = [
 
-        'name', 'email', 'password','gender','country' , 'avatar_image', 'national_id','is_approved','approved_by','mobile'
+        'name', 'email', 'password','gender','country' , 'avatar_image', 'national_id','is_approved','approved_by','mobile','creator'
 
     ];
 
@@ -47,6 +47,10 @@ class User extends Authenticatable implements BannableContract
     {
         return $this->belongsToMany(Room::class,'reservations')->withPivot('user_id', 'room_id','clientpaidprice','created_at','updated_at');
 
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class,'creator');
     }
 
 

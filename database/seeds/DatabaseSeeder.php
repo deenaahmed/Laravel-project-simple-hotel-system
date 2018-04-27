@@ -28,5 +28,8 @@ class DatabaseSeeder extends Seeder
         $role->givePermissionTo($permission1);
         $role->givePermissionTo($permission2);
         $admin->assignRole('admin');
+        $role1 = Role::create(['name' => 'manager']);
+        $role2 = Role::create(['name' => 'receptionist']);
+        $role3 = Role::create(['name' => 'client']);
     }
 }

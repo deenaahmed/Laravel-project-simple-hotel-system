@@ -164,8 +164,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-        Yajra\DataTables\DataTablesServiceProvider::class,
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class
 
 
@@ -219,6 +217,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
+        // 'permission' => Spatie\Permission\Models\Permission::class,
+        // 'role' => Spatie\Permission\Models\Role::class,
     ],
 
 ];
