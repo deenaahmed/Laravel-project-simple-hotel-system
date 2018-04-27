@@ -146,10 +146,15 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        Alfa6661\AutoNumber\AutoNumberServiceProvider::class,
+        
         /*
          * Package Service Providers...
          */
+
+        Spatie\Permission\PermissionServiceProvider::class,
+        Cog\Laravel\Ban\Providers\BanServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -159,8 +164,12 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class ,
         Yajra\DataTables\DataTablesServiceProvider::class,
+
+
+
 
     ],
 
@@ -212,6 +221,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class ,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+
 
     ],
 

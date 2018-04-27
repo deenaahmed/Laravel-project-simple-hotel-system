@@ -2,16 +2,22 @@
 
 namespace App;
 use Spatie\Permission\Traits\HasRoles;
-
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Room ;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-class User extends Authenticatable
+
+
+class User extends Authenticatable implements BannableContract
 {
+    protected $table_id="datatables_data";
     use Notifiable;
     use HasRoles;
+    use Bannable;
+
 
 
     /**
@@ -25,6 +31,7 @@ class User extends Authenticatable
 
     ];
 
+    
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -33,9 +40,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-
-
 
     // relation many to many
 
