@@ -29,15 +29,7 @@
     <input type="text" name="name" class="form-control" value={{$floor->name}} >
   </div>
 
- <div class="form-group">
-    <label >Floor Creator</label>
-    <select class="form-control" name="user">
-    @foreach ($users as $user)
-      <option value="{{$user->id}}" >{{ $user->name }}</option>
-@endforeach
-    </select>
 
-  </div>
 
   <button type="submit" class="btn btn-success">Submit</button>
  

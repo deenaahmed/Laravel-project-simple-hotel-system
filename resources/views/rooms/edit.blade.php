@@ -47,16 +47,6 @@
 
   </div>
 
- <div class="form-group">
-    <label >Room Creator</label>
-    <select class="form-control" name="user">
-    @foreach ($users as $user)
-      <option value="{{$user->id}}" >{{ $user->name }}</option>
-@endforeach
-    </select>
-
-    </div>
-
 <br>
     <label >Room Image </label>
 
