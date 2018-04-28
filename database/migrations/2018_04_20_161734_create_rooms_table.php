@@ -15,6 +15,7 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->increments('id');
+
             $table->string('number');
             $table->integer('capacity');
             $table->integer('user_id'); ///foriegn key to the manager table
@@ -22,6 +23,7 @@ class CreateRoomsTable extends Migration
             $table->string('isavailable'); //true or false
             $table->float('price'); // add from diaa branch
             $table->string('image'); //from diaa branch
+
             $table->timestamps();
         });
     }

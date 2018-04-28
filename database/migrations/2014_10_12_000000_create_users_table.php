@@ -26,6 +26,8 @@ class CreateUsersTable extends Migration
             $table->integer('is_approved')->default(0);
             $table->integer('approved_by')->nullable();
             $table->integer('creator')->nullable();
+            //$table->string('reservation_id')->nullable();  //national_id
+
             $table->rememberToken();
             $table->timestamps();
         });

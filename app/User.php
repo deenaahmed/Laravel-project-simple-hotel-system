@@ -29,6 +29,8 @@ class User extends Authenticatable implements BannableContract
 
         'name', 'email', 'password','gender','country' , 'avatar_image', 'national_id','is_approved','approved_by','mobile','creator'
 
+
+
     ];
 
     
@@ -40,6 +42,13 @@ class User extends Authenticatable implements BannableContract
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+
+ public function routeNotificationForMail($notification)
+    {
+        return $this->email;
+    }
 
     // relation many to many
 
@@ -54,6 +63,15 @@ class User extends Authenticatable implements BannableContract
     }
 
 
+ public function reservations()
+    {
+        return $this->belongsTo(Reservations::class);
+
+    }
+
+    
+
+
 
 
 
@@ -63,3 +81,4 @@ class User extends Authenticatable implements BannableContract
 
 
 }
+
