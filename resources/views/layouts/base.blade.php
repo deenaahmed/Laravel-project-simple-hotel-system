@@ -145,11 +145,22 @@
             @endhasrole
             @hasanyrole('admin|manager')
             <li><a href="receptionists"><i class="fa fa-circle-o"></i> Manage Receptionists</a></li>
+            <li><a href="/admin/clients"><i class="fa fa-circle-o"></i> Manage clients</a></li>
+
             <li><a href="rooms"><i class="fa fa-circle-o"></i> Manage Rooms</a></li>
             <li><a href="floors"><i class="fa fa-circle-o"></i> Manage Floors</a></li>
             @endhasrole
-            <li><a href="clients"><i class="fa fa-circle-o"></i> Manage Clients</a></li>
+             @hasanyrole('receptionist')
+            <li><a href="/receptionist/manage"><i class="fa fa-circle-o"></i> manage clients</a></li>
+            <li><a href="/receptionist/approved"><i class="fa fa-circle-o"></i> My approved clients</a></li>
+            <li><a href="/receptionist/reservations"><i class="fa fa-circle-o"></i> Reservations</a></li>
+            @endhasrole
+
+          
+            
           </ul>|
+
+
         </li>
     </section>
     <!-- /.sidebar -->

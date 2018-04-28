@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Room;
 use App\Floor;
 use App\User;
+use Auth;
 
 class FloorsController extends Controller
 {
   public function index(){
-    return view('floors.index',[
-     
+    return view('floors.index',[    
     ]);
   }
 
@@ -22,24 +22,26 @@ public function getdatatable(){
   $floors = Floor::with('user')->get();
   return datatables()->of($floors)
   ->addColumn('action', function ($data) {
+    if(Auth::user()->id == $data->user_id){
     return "<a class='btn btn-xs btn-primary' href='/floors/$data->id/edit'>Edit</a> 
     <button class='btn btn-xs btn-danger delete '  floor='$data->id' id='delete' >Delete </button>
-    ";
+    ";}
+    else{
+      return " ";
+      }
     })
     ->make(true);
  }
 
 public function create(){
   $users=User::all();
-  return view('floors.create',[
-     'users'=>$users
-    ]);
+  return view('floors.create');
   }
 
 public function store(StoreFloorRequest $request){
   $floor = Floor::create([
     'name' => $request->name,
-    'user_id' =>$request->user,
+    'user_id' =>Auth::user()->id,
   ]);
   return redirect('floors');
   }
@@ -48,14 +50,12 @@ public function edit($id){
   $floor=Floor::find($id);
   $users=User::all();
    return view('floors.edit',[
-        'users'=> $users,
         'floor'=> $floor,
       ]);
   }
 public function update(StoreFloorRequest $request){
   Floor::where('id',$request->id)->update([
-    'name'=> $request->name,
-    'user_id'=> $request->user,     
+    'name'=> $request->name,    
   ]);
   return redirect('floors');
  } 

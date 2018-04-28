@@ -6,6 +6,9 @@
         {{ session('alert') }}
     </div>
 @endif
+<div align="center">
+<h1> Rooms </h1>
+</div>
 
    <button type="button" class="btn btn-success" onclick="window.location.href='rooms/create'" >Create Room</button>
 
@@ -19,8 +22,12 @@
     <td>capacity </td>
     <td>price($)</td>
     <td> Floor Name </td>
-    <td> Manger Name </td>
+    @hasrole('admin')
+    <td>Manager Name </td>
+    @endhasrole
+   
     <td id="actions"> Actions  </td>
+
     </tr>
 </thead>
 </table>
@@ -38,10 +45,12 @@
             {data: 'capacity'},
             {data: 'price'},
             {data: 'floor.name'},
-            {data: 'user.name'},      
-            {data: 'action', name: 'action', orderable: false, searchable: false}          
-        ]
-        
+            @hasrole('admin')
+            {data: 'user.name'},  
+            @endhasrole  
+            {data: 'action', name: 'action', orderable: false, searchable: false} 
+
+            ]
         });
     });
 </script>

@@ -7,7 +7,9 @@
         {{ session('alert') }}
     </div>
 @endif
-
+<div align="center">
+<h1> Floors </h1>
+</div>
    <button type="button" class="btn btn-success" onclick="window.location.href='floors/create'" >Create Floor</button>
 <br>
 <br>
@@ -19,7 +21,9 @@
     <tr>
     <td>Number </td>
     <td>Name </td>
-    <td> Manger </td>
+    @hasrole('admin')
+    <td> Manager Name </td>
+    @endhasrole
     <td id="actions"> Actions  </td>
     </tr>
 </thead>
@@ -35,8 +39,10 @@
             data : {'_token' : '{{csrf_token()}}'},
             columns: [
             {data: 'number'},
-            {data: 'name'}, 
-            {data: 'user.name'},  
+            {data: 'name'},
+            @hasrole('admin') 
+            {data: 'user.name'},
+            @endhasrole  
             {data: 'action', name: 'action', orderable: false, searchable: false}          
         ]
         });
@@ -52,7 +58,6 @@
 <script>
 $( document ).ready(function(){
 $(document).on("click", ".delete", function() {
-console.log("/floors/"+$(this).attr('floor'))
 var line=$(this).parent().parent()
  if (confirm("Sure to delete?")) {
    $.ajax({
@@ -61,11 +66,9 @@ var line=$(this).parent().parent()
         data : {'_token' : '{{csrf_token()}}'},
             success: function(result){
                line.remove();
-                //console.log(Respone);
                 window.location.href="floors"
             },
             error: function(err){
-               // console.log(err);
                window.location.href="floors"
             }
     });
