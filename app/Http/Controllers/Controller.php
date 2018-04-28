@@ -14,4 +14,8 @@ class Controller extends BaseController
     {
         return view('error');
     }
+    public function showadmin()
+    {
+        return view('layouts.base');
+    }
 }
