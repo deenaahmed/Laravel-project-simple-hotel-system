@@ -18,11 +18,7 @@ class Reservation extends Model
     ];
 
 
-public function room()
-{
-    $this->hasOne('App\Room');
 
-}
 
 
 }

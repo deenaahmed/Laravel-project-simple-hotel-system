@@ -102,6 +102,14 @@ class ClientReservationController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages = [
+            'required' => 'You should Enter Number Of accompany',
+        ];
+
+       $request->validate([
+            'accompany' => 'required',
+        ],$messages);
+
         $room=Room::where('id','=',$id)->first();
         $accompany=($request->accompany);
         $accompany = (int) $accompany;
