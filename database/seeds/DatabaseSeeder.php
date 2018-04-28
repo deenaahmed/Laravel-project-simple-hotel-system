@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             'name' => '​admin@admin.com',
             'email' => '​admin@admin.com',
             'password' => bcrypt('123456'),
+            'avatar_image' => '/avatars2/Nophoto.jpg',
         ]);
         $admin = User::where('email', '=', '​admin@admin.com')->first();
         $role = Role::create(['name' => 'admin']);
