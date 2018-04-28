@@ -91,7 +91,7 @@
                             <div class="col-md-6">
                                 <select   class="form-control {{$errors->has('country') ? ' is-invalid' : '' }}" name="country" >
                                     <option value="" selected disabled>Please select Country</option>
-                                @foreach(countries() as $country)
+                                @foreach($countries as $country)
                                     <option >{{$country['name']}}</option>
                                         @endforeach
                                 </select>
