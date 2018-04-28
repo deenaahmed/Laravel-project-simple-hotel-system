@@ -91,7 +91,6 @@ class ClientReservationController extends Controller
 
         return view('client.edit' , compact('room','id'));
 
-
     }
 
     /**
