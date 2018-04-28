@@ -1,9 +1,12 @@
 <?php
 
+<<<<<<< HEAD
 use App\Notifications\NotifyClient;
 
 use App\User;
 
+=======
+>>>>>>> 59e261d1e4615fa76ac68044c4904ec63a8b1c48
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,15 +38,12 @@ Route::get('/', function () {
 
 /*
 
-
 Diaa Section 
 
-
 */
-
 Route::get('/' , 'clients\ClientReservationController@index')->name('client.home');
 Route::resource('/reservations/rooms', 'clients\ClientReservationController')->except([
-    'index']);
+    'index'])->middleware('auth','forbid-banned-user');
 
 Route::get('/client/reservations/{id}' , 'clients\LastClientReservation@show')->name('client.reservations');
 Route::get('/client/reservations/' , 'clients\LastClientReservation@index')->name('client.reservations.index');
@@ -54,22 +54,28 @@ Route::get('/client/reservations/' , 'clients\LastClientReservation@index')->nam
 
 Mai Section 
 
-
-
 */
-Route::get('receptionist','UsersController@home')->middleware('forbid-banned-user');
-Route::get('receptionist/manage','UsersController@manageClients')->middleware('forbid-banned-user');
-Route::get('receptionist/approved','UsersController@approvedClients')->middleware('forbid-banned-user');
-Route::get('receptionist/reservations','UsersController@reservations')->middleware('forbid-banned-user');
-Route::get('receptionist/{id}/approve','UsersController@approve')->middleware('forbid-banned-user');
-Route::get('receptionist/{id}/delete','UsersController@delete')->middleware('forbid-banned-user');
+Route::get('receptionist','UsersController@home')->middleware('auth','role:admin|manager|receptionist','forbid-banned-user');
+Route::get('receptionist/manage','UsersController@manageClients')->middleware('auth','role:admin|manager|receptionist','forbid-banned-user');
+Route::get('receptionist/approved','UsersController@approvedClients')->middleware('auth','role:admin|manager|receptionist','forbid-banned-user');
+Route::get('receptionist/reservations','UsersController@reservations')->middleware('auth','role:admin|manager|receptionist','forbid-banned-user');
+Route::get('receptionist/{id}/approve','UsersController@approve')->middleware('auth','role:admin|manager|receptionist','forbid-banned-user');
+Route::get('receptionist/{id}/delete','UsersController@delete')->middleware('auth','role:admin|manager|receptionist','forbid-banned-user');
 //*********************************Admin*****
+<<<<<<< HEAD
 Route::get('admin/clients','UsersController@showClients')->middleware('forbid-banned-user');
 Route::get('admin/clients/{id}/edit','UsersController@editClient')->middleware('forbid-banned-user');
 Route::put('admin/clients/{id}','UsersController@updateClient')->middleware('forbid-banned-user');
 Route::get('admin/clients/{id}/delete','UsersController@deleteClient')->middleware('forbid-banned-user');
 Route::get('admin/clients/add','UsersController@createClient')->middleware('forbid-banned-user');
 Route::post('admin/clients','UsersController@storeClient')->middleware('forbid-banned-user');
+=======
+Route::get('admin/clients','UsersController@showClients')->middleware('auth','role:admin|manager|receptionist','forbid-banned-user');
+Route::get('admin/clients/{id}/edit','UsersController@editClient')->middleware('auth','role:admin|manager|receptionist','forbid-banned-user');
+Route::get('admin/clients/{id}/delete','UsersController@deleteClient')->middleware('auth','role:admin|manager|receptionist','forbid-banned-user');
+
+
+>>>>>>> 59e261d1e4615fa76ac68044c4904ec63a8b1c48
 /*
 
 
@@ -78,56 +84,57 @@ Deena Section
 
 
 */
-
+Route::get('ERROR' , 'Controller@index'); ///error page
 Route::get(
     'managers',
     'ManagersController@index'
-)->name('managers.index')->middleware('forbid-banned-user');
+)->name('managers.index')->middleware('auth','role:admin','forbid-banned-user');
 Route::get(
     'receptionists',
     'ReceptionistsController@index'
-)->name('receptionists.index')->middleware('forbid-banned-user');
-Route::get('managers/create','ManagersController@create')->middleware('forbid-banned-user');
-Route::get('managers/getdata','ManagersController@getdata')->name('managers.data')->middleware('forbid-banned-user');
-Route::post('managers','ManagersController@store')->middleware('forbid-banned-user');
-Route::get('managers/{id}/edit','ManagersController@edit')->middleware('forbid-banned-user');
-Route::put('managers/{id}','ManagersController@update')->middleware('forbid-banned-user');
-Route::get('managers/{id}','ManagersController@show')->middleware('forbid-banned-user');
-Route::delete('managers/{id}','ManagersController@destroy')->middleware('forbid-banned-user');
+)->name('receptionists.index')->middleware('auth','role:admin|manager|receptionist','forbid-banned-user');
+Route::get('admin','Controller@showadmin')->middleware('auth','role:admin|manager|receptionist','forbid-banned-user');
+Route::get('managers/create','ManagersController@create')->middleware('auth','role:admin','forbid-banned-user');
+Route::get('managers/getdata','ManagersController@getdata')->name('managers.data')->middleware('auth','role:admin','forbid-banned-user');
+Route::post('managers','ManagersController@store')->middleware('auth','role:admin','forbid-banned-user');
+Route::get('managers/{id}/edit','ManagersController@edit')->middleware('auth','role:admin','forbid-banned-user');
+Route::put('managers/{id}','ManagersController@update')->middleware('auth','role:admin','forbid-banned-user');
+Route::get('managers/{id}','ManagersController@show')->middleware('auth','role:admin','forbid-banned-user');
+Route::delete('managers/{id}','ManagersController@destroy')->middleware('auth','role:admin','forbid-banned-user');
 
-Route::get('receptionists/create','ReceptionistsController@create')->middleware('forbid-banned-user');
-Route::get('receptionists/getdata','ReceptionistsController@getdata')->name('receptionists.data')->middleware('forbid-banned-user');
-Route::post('receptionists','ReceptionistsController@store')->middleware('forbid-banned-user');
-Route::get('receptionists/{id}/edit','ReceptionistsController@edit')->middleware('forbid-banned-user');
-Route::put('receptionists/{id}','ReceptionistsController@update')->middleware('forbid-banned-user');
-Route::get('receptionists/{id}','ReceptionistsController@show')->middleware('forbid-banned-user');
-Route::delete('receptionists/{id}','ReceptionistsController@destroy')->middleware('forbid-banned-user');
-Route::get('receptionists/{id}/bann','ReceptionistsController@bann')->middleware('forbid-banned-user');
+Route::get('receptionists/create','ReceptionistsController@create')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::get('receptionists/getdata','ReceptionistsController@getdata')->name('receptionists.data')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::post('receptionists','ReceptionistsController@store')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::get('receptionists/{id}/edit','ReceptionistsController@edit')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::put('receptionists/{id}','ReceptionistsController@update')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::get('receptionists/{id}','ReceptionistsController@show')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::delete('receptionists/{id}','ReceptionistsController@destroy')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::get('receptionists/{id}/bann','ReceptionistsController@bann')->middleware('auth','role:admin|manager','forbid-banned-user');
 /*
 
 
 Aya Section 
 */
 ########## Floors Routes ############
-Route::get('floors','FloorsController@index');
-Route::get('floors/getdatatable','FloorsController@getdatatable');
-Route::get('floors/create','FloorsController@create');
-Route::post('floors','FloorsController@store');
-Route::get('floors/{id}/edit','FloorsController@edit');
-Route::patch('floors/{id}','FloorsController@update');
-Route::delete('floors/{id}', 'FloorsController@delete');
-
+Route::get('floors','FloorsController@index')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::get('floors/getdatatable','FloorsController@getdatatable')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::get('floors/create','FloorsController@create')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::post('floors','FloorsController@store')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::get('floors/{id}/edit','FloorsController@edit')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::put('floors/{id}','FloorsController@update')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::delete('floors/{id}', 'FloorsController@delete')->middleware('auth','role:admin|manager','forbid-banned-user');
 /*____________________________________
 #### Rooms Routes #################
 */
-Route::get('rooms','RoomsController@index');
-Route::get('rooms/getdatatable','RoomsController@getdatatable');
-Route::get('rooms/create','RoomsController@create');
-Route::post('rooms','RoomsController@store');
-Route::get('rooms/{id}/edit','RoomsController@edit');
-Route::patch('rooms/{id}','RoomsController@update');
-Route::delete('rooms/{id}','RoomsController@delete');
+Route::get('rooms','RoomsController@index')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::get('rooms/getdatatable','RoomsController@getdatatable')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::get('rooms/create','RoomsController@create')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::post('rooms','RoomsController@store')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::get('rooms/{id}/edit','RoomsController@edit')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::put('rooms/{id}','RoomsController@update')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::delete('rooms/{id}','RoomsController@delete')->middleware('auth','role:admin|manager','forbid-banned-user');
+
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home')->middleware('forbid-banned-user');
+Route::get('/home', 'HomeController@index')->name('home');
 

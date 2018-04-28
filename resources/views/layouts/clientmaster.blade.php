@@ -34,7 +34,7 @@
                 </li>
                     @hasanyrole('manager|admin|receptionist')
                         <li class="nav-item">
-                         <a class="nav-link" href="/managers">Dashboard</a>
+                         <a class="nav-link" href="admin">Dashboard</a>
                          </li>
                     @endhasrole
 

@@ -1,15 +1,6 @@
+@extends('layouts.base')
 
-<html>
-<head>
-
-<meta name="csrf-token" content="{{ csrf_token() }}">
-<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">  
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
-</head>
-<body>
+@section('content')
 
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -38,8 +29,8 @@
   </div>
 
     <div class="form-group">
-    <label>Room Price</label>
-    <input type="text" name="price" class="form-control"  placeholder="Room Price">
+    <label>Room Price($) </label>
+    <input type="text" name="price" class="form-control"  placeholder="Room Price ">
   </div>
 
 <div class="form-group">
@@ -64,12 +55,24 @@
   </div>
 
   <br>
- Image: <input type="file" name="image" class="form-control" />
+  <label >Room Image </label>
+
+ <input type="file" name="image" class="form-control" />
+ <br>
+ <br>
   <button type="submit" class="btn btn-success">Submit</button>
 </form>
 
 </div>
 </div>
 
-</body>
-</html>
+@stop
+@push('scripts')
+  <script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+  <script src="{{asset('js/jquery.js')}}" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.js" type="text/javascript"></script>
+    
+  @endpush    

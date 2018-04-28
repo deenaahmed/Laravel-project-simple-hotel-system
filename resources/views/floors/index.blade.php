@@ -1,15 +1,5 @@
+@extends('layouts.base')
 
-<html>
-<head>
-
-<meta name="csrf-token" content="{{ csrf_token() }}">
-<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">  
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
-</head>
-<body>
 @section('content')
 
 @if (session('alert'))
@@ -18,10 +8,7 @@
     </div>
 @endif
 
-<br>
-<br>
    <button type="button" class="btn btn-success" onclick="window.location.href='floors/create'" >Create Floor</button>
-
 <br>
 <br>
 {{csrf_field()}}
@@ -30,7 +17,6 @@
 <table id="users-table" class="table">
 <thead>
     <tr>
-    <td>Id</td>
     <td>Number </td>
     <td>Name </td>
     <td> Manger </td>
@@ -38,7 +24,8 @@
     </tr>
 </thead>
 </table>
-
+@stop
+@push('scripts')
 <script>
     $(function() {
         $('#users-table').DataTable({
@@ -47,7 +34,6 @@
             ajax: 'http://localhost:8000/floors/getdatatable' ,
             data : {'_token' : '{{csrf_token()}}'},
             columns: [
-            {data: 'id'},
             {data: 'number'},
             {data: 'name'}, 
             {data: 'user.name'},  
@@ -56,7 +42,13 @@
         });
     });
 </script>
-
+<script src="https://code.jquery.com/jquery-1.12.3.js"></script>
+  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+  <script src="{{asset('js/jquery.js')}}" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/jquery.dataTables.js" type="text/javascript"></script>
+    
 <script>
 $( document ).ready(function(){
 $(document).on("click", ".delete", function() {
@@ -81,5 +73,6 @@ var line=$(this).parent().parent()
   
 });
 }); </script>
-</body>
-</html>
+
+
+@endpush
