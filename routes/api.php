@@ -19,3 +19,5 @@ Route::get('floors','api\FloorsController@index')->middleware('jwt.auth');
 Route::middleware('jwt.auth')->get('users', function(Request $request) {
     return auth()->user();
 });
+Route::post('user/register', 'api\RegisterController@register');
+Route::post('user/login', 'api\LoginController@login');
