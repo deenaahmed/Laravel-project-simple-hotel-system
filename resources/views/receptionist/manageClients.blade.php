@@ -1,20 +1,11 @@
-@extends('admin.admin_template')
+@extends('layouts.base')
 
 @section('content')
 
 
 
 <h1>Manage Clients</h1>
-<head>
 
-<meta name="csrf-token" content="{{ csrf_token() }}">
-<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">  
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
-</head>
-<body>
 <button type="button" class="btn btn-success" onclick="window.location.href='/receptionist'"">Home</button>
 <br>
 <br>
@@ -35,7 +26,8 @@
     </tr>
   </thead>
     </table>
-
+@stop
+@push('scripts')
 <script>
     $(function() {
         $('#users-table').DataTable({
@@ -81,5 +73,5 @@ var line=$(this).parent().parent()
 });
 }); </script>
 
-</body>
-@endsection
+
+@endpush

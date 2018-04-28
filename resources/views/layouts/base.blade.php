@@ -136,7 +136,14 @@
             <li><a href="clients"><i class="fa fa-circle-o"></i> Manage Clients</a></li>
             <li><a href="rooms"><i class="fa fa-circle-o"></i> Manage Rooms</a></li>
             <li><a href="floors"><i class="fa fa-circle-o"></i> Manage Floors</a></li>
+             @hasanyrole('receptionist')
+            <li><a href="/receptionist/manage"><i class="fa fa-circle-o"></i> manage clients</a></li>
+            <li><a href="/receptionist/approved"><i class="fa fa-circle-o"></i> My approved clients</a></li>
+            <li><a href="/receptionist/reservations"><i class="fa fa-circle-o"></i> Reservations</a></li>
+            @endhasrole
           </ul>|
+
+
         </li>
         <li class="treeview">
           <a href="#">
