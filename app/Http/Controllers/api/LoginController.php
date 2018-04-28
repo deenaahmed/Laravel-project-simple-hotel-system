@@ -10,7 +10,6 @@ use JWTFactory;
 use JWTAuth;
 use App\User;
 use Illuminate\Support\Facades\Auth;
-
 class LoginController extends Controller
 {
     public function login(Request $request)

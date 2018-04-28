@@ -13,11 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('floors','api\FloorsController@store');
-Route::get('floors','api\FloorsController@index')->middleware('jwt.auth');
-
-Route::middleware('jwt.auth')->get('users', function(Request $request) {
-    return auth()->user();
-});
+Route::middleware('jwt.auth')->get('users','api\FloorsController@index');
 Route::post('user/register', 'api\RegisterController@register');
 Route::post('user/login', 'api\LoginController@login');

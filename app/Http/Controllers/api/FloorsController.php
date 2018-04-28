@@ -13,17 +13,7 @@ use Response;
 
 class FloorsController extends Controller
 {
-    public function store(StoreFloorRequest $request){
-        $floor = Floor::create([
-            'name' => $request->get('name'),
-            'user_id' =>$request->get('user'),
-          ]);
-        $floor = Floor::first();
-        $token = JWTAuth::fromUser($floor);
-        
-        return Response::json(compact('token')); 
- }
- public function index(){
+     public function index(){
      $floors=Floor::all();
      return $floors;
     }
