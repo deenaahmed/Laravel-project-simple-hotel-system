@@ -132,10 +132,10 @@
             @endhasrole
             @hasanyrole('admin|manager')
             <li><a href="receptionists"><i class="fa fa-circle-o"></i> Manage Receptionists</a></li>
-            @endhasrole
-            <li><a href="clients"><i class="fa fa-circle-o"></i> Manage Clients</a></li>
             <li><a href="rooms"><i class="fa fa-circle-o"></i> Manage Rooms</a></li>
             <li><a href="floors"><i class="fa fa-circle-o"></i> Manage Floors</a></li>
+            @endhasrole
+            <li><a href="clients"><i class="fa fa-circle-o"></i> Manage Clients</a></li>
           </ul>|
         </li>
         <li class="treeview">
