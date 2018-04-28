@@ -37,7 +37,16 @@
             <li><a href="/managers"><i class="fa fa-circle-o"></i> Manage Managers</a></li>
             <li><a href="/receptionists"><i class="fa fa-circle-o"></i> Manage Receptionists</a></li>
             <li><a href="/clients"><i class="fa fa-circle-o"></i> Manage Clients</a></li>
+            <li><a href="/receptionist/manage"><i class="fa fa-circle-o"></i> Manage Clients</a></li>
+            <li><a href="/receptionist/approved"><i class="fa fa-circle-o"></i> Approved clients</a></li>
+            <li><a href="/receptionist/reservations"><i class="fa fa-circle-o"></i> reservations</a></li>
+
+
+
           </ul>
+
+
+
         </li>
         <!-- <li class="treeview">
           <a href="#">

@@ -7,7 +7,9 @@
 <div class="container" style="margin-top: 50px ; margin-bottom: 250px">
     <table  id="Lastresvation-table" class="table table-active">
         <thead>
+        
         <tr>
+      
 
             <th>Room number</th>
             <th>Paid price</th>
@@ -24,16 +26,14 @@
         $('#Lastresvation-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: 'http://hotel.local/client/reservations/{{Auth::user()->id}}',
-            columns: [
-
-                { data: 'number', name: 'number' },
-
-                { data: 'clientpaidprice', name: 'clientpaidprice' },
-
-                { data: 'accompanynumber', name: 'accompanynumber' }
-
+            ajax: 'http://localhost:8000/client/reservations/{{Auth::user()->id}}',
+            data : {'_token' : '{{csrf_token()}}'},
+             columns: [
+            {data: 'number'},
+            {data: 'clientpaidprice'},
+            {data: 'accompanynumber'},        
             ]
+         
         });
     });
 </script>

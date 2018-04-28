@@ -59,6 +59,14 @@ class User extends Authenticatable implements BannableContract
     }
 
 
+ public function reservations()
+    {
+        return $this->belongsTo(Reservations::class);
+
+    }
+
+    
+
 
 
 
