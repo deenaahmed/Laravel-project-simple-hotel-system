@@ -15,7 +15,16 @@ class Reservation extends Model
         'user_id',
         'room_number',
         'room_id',
+        'accompanynumber'
     ];
+
+    public function user() {
+        return $this ->belongsTo(User::class);
+    }
+
+    public function room(){
+        return $this->belongsTo(Room::class);
+    }
 
 
 

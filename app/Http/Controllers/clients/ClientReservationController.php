@@ -5,6 +5,7 @@ namespace App\Http\Controllers\clients;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Room ;
+use App\Reservation;
 use Illuminate\Support\Facades\Auth;
 
 use Cartalyst\Stripe\Laravel\StripeServiceProvider;
@@ -137,8 +138,13 @@ try {
 }
 
         // in case success insert the booking in our  databse
-        $user=Auth::user();
-        $user->rooms()->save( $room,['clientpaidprice'=>$room->price ,'accompanynumber'=>$accompany]);
+    Reservation::create([
+            'clientpaidprice' => $room->price,
+            'user_id' => Auth::id(),
+            'room_id' => $room->id ,
+            'accompanynumber'=>$accompany
+        ]);
+
         $room->isavailable='false';
         $room->save();
 
