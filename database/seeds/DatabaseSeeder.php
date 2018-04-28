@@ -22,12 +22,6 @@ class DatabaseSeeder extends Seeder
         ]);
         $admin = User::where('email', '=', '​admin@admin.com')->first();
         $role = Role::create(['name' => 'admin']);
-        $permission = Permission::create(['name' => 'admin manage managers']);
-        $permission1 = Permission::create(['name' => 'admin manage receptionists']);
-        $permission2 = Permission::create(['name' => 'admin manage clients']);
-        $role->givePermissionTo($permission);
-        $role->givePermissionTo($permission1);
-        $role->givePermissionTo($permission2);
         $admin->assignRole('admin');
         $role1 = Role::create(['name' => 'manager']);
         $role2 = Role::create(['name' => 'receptionist']);

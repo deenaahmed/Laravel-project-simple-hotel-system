@@ -17,7 +17,9 @@ class CreateFloorsTable extends Migration
             $table->increments('id');
             $table->string('number');
             $table->string('name');
+
             $table->integer('user_id'); // foreign key from the manager table
+
             $table->timestamps();
         });
     }

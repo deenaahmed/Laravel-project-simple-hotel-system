@@ -29,15 +29,23 @@
 
 
     <div class="form-group">
-
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <h3>Checkout</h3>
         <label for="accompany">number of accompany</label>
         {{ csrf_field() }}
         <input type="hidden" name="_method" value="PUT">
         <input type="hidden" value="{{$room}}" name="room">
-        <input name="accompany" class="form-control" type="number">
+        <input name="accompany" class="form-control" type="number" required max="{{$room->capacity}}" min="1">
     </div>
-                <script>  console.log({{$room->price}})</script>
+                <script>  console.log({{$room->accompanynumber}})</script>
                 <script
 
                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -56,18 +64,6 @@
     </div>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
