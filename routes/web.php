@@ -82,15 +82,16 @@ Route::get('receptionists/{id}/bann','ReceptionistsController@bann')->middleware
 Aya Section 
 */
 ########## Floors Routes ############
-Route::get('floors','FloorsController@index')->middleware('auth','role:admin|manager','forbid-banned-user');
-Route::get('floors/getdatatable','FloorsController@getdatatable')->middleware('auth','role:admin|manager','forbid-banned-user');
+//Route::get('floors','FloorsController@index')->middleware('auth','role:admin|manager','forbid-banned-user');
+//Route::get('floors/getdatatable','FloorsController@getdatatable')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::get('floors/create','FloorsController@create')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::post('floors','FloorsController@store')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::get('floors/{id}/edit','FloorsController@edit')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::patch('floors/{id}','FloorsController@update')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::delete('floors/{id}', 'FloorsController@delete')->middleware('auth','role:admin|manager','forbid-banned-user');
 
-
+Route::get('floors/getdatatable','FloorsController@getdatatable');
+Route::get('floors','FloorsController@index');
 /*____________________________________
 #### Rooms Routes #################
 */
