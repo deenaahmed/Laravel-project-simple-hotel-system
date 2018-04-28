@@ -9,10 +9,12 @@ use App\Http\Requests\UpdateRoomRequest;
 use App\Room;
 use App\Floor;
 use App\User;
+use Auth;
 class RoomsController extends Controller
 {
 public function index(){
     return view('rooms.index');
+   
 }
 
 public function getdatatable(){
@@ -20,9 +22,13 @@ public function getdatatable(){
    $rooms =Room::with('floor','user')->get();
     return datatables()->of($rooms)
     ->addColumn('action', function ($data) {
+      if(Auth::user()->id == $data->user_id){
     return "<a class='btn btn-xs btn-primary' href='/rooms/$data->id/edit'>Edit</a> 
     <button class='btn btn-xs btn-danger delete ' csrf_token() id='delete' room='$data->id'>Delete </a>
-    "; 
+    "; }
+    else{
+    return " ";
+    }
    })
     ->make(true);
   } 
@@ -31,10 +37,9 @@ public function create(){
   $users=User::all();
   $floors=Floor::all();
     return view('rooms.create',[
-       'users'=>$users,
        'floors'=>$floors,
    ]);
-  }
+}
   
 public function store(StoreRoomRequest $request){
   $image = $request->file('image');
@@ -47,7 +52,7 @@ public function store(StoreRoomRequest $request){
       'capacity' =>$request->capacity,
       'price'=>$request->price,
       'floor_id'=> $request->floor,
-      'user_id'=> $request->user,
+      'user_id'=> Auth::user()->id,
       'isavailable'=> 'true',
       'image'=> $input['imagename']
        ]);
@@ -59,7 +64,6 @@ public function edit($id){
   $users=User::all();
   $floors=Floor::all();
     return view('rooms.edit',[
-      'users'=> $users,
       'room'=> $room,
       'floors'=>$floors,
     ]);
@@ -80,7 +84,6 @@ Room::where('id',$request->id)->update([
   'capacity' =>$request->capacity,
   'price'=>$request->price,
   'floor_id'=> $request->floor,
-  'user_id'=> $request->user, 
   'image' => $photo
 ]);
 return redirect('rooms');

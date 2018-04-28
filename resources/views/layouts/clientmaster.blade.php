@@ -37,7 +37,7 @@
                     </li>
                     @hasanyrole('manager|admin|receptionist')
                         <li class="nav-item">
-                         <a class="nav-link" href="admin">Dashboard</a>
+                         <a class="nav-link" href="/admin">Dashboard</a>
                          </li>
                     @endhasrole
 
@@ -72,6 +72,16 @@
         </div>
     </div>
 </nav>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
 
