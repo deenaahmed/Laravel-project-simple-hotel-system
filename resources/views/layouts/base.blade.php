@@ -131,7 +131,7 @@
             @endhasrole
             @hasanyrole('admin|manager')
             <li><a href="receptionists"><i class="fa fa-circle-o"></i> Manage Receptionists</a></li>
-            <li><a href="admin/clients"><i class="fa fa-circle-o"></i> Manage clients</a></li>
+            <li><a href="/admin/clients"><i class="fa fa-circle-o"></i> Manage clients</a></li>
 
             <li><a href="rooms"><i class="fa fa-circle-o"></i> Manage Rooms</a></li>
             <li><a href="floors"><i class="fa fa-circle-o"></i> Manage Floors</a></li>
