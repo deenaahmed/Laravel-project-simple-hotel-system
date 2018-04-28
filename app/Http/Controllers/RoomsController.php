@@ -50,7 +50,7 @@ public function store(StoreRoomRequest $request){
       'user_id'=> $request->user,
       'isavailable'=> 'true',
       'image'=> $input['imagename']
-         ]);
+       ]);
     return redirect('rooms');
   }  
 
@@ -65,17 +65,27 @@ public function edit($id){
     ]);
 }
 public function update(UpdateRoomRequest $request){
+  if ($request ->image ==null){
+    $photo='default_room.jpg';
+  }
+  else {
+    $image = $request->file('image');
+    $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+    $destinationPath = public_path('/room_images');
+    $image->move($destinationPath, $input['imagename']);
+    $photo=$input['imagename'];
+  }
 Room::where('id',$request->id)->update([
   'number' => $request->number,
   'capacity' =>$request->capacity,
   'price'=>$request->price,
   'floor_id'=> $request->floor,
-  'user_id'=> $request->user,
-  //'image'=> $input['imagename']  
+  'user_id'=> $request->user, 
+  'image' => $photo
 ]);
 return redirect('rooms');
-
   }
+
   public function delete($id){
     $room=Room::find($id);
     if ($room->isavailable=="false"){
