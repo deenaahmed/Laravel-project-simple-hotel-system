@@ -32,6 +32,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href={{ route('client.reservations.index')}}>My Resrvation</a>
                 </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={{ route('editprofile.edit',[Auth::user()->id])}}>My Profile</a>
+                    </li>
                     @hasanyrole('manager|admin|receptionist')
                         <li class="nav-item">
                          <a class="nav-link" href="admin">Dashboard</a>

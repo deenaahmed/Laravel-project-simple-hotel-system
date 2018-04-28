@@ -23,6 +23,9 @@ Route::resource('/reservations/rooms', 'clients\ClientReservationController')->e
 Route::get('/client/reservations/{id}' , 'clients\LastClientReservationController@show')->name('client.reservations');
 Route::get('/client/reservations/' , 'clients\LastClientReservationController@index')->name('client.reservations.index');
 
+Route::get('/client/editprofile/{id}' , 'clients\editpofileController@edit')->name('editprofile.edit');
+Route::Put('/client/update/{id}' , 'clients\editpofileController@update')->name('editprofile.update');
+
 
 
 /*

@@ -74,7 +74,6 @@ class ClientReservationController extends Controller
         echo "iam show page";
 
 
-
     }
 
     /**
