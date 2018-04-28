@@ -17,7 +17,7 @@ public function index(){
 
 public function getdatatable(){
     header("Access-Control-Allow-Origin: *");
-    $rooms =Room::with('floor','user')->get();
+   $rooms =Room::with('floor','user')->get();
     return datatables()->of($rooms)
     ->addColumn('action', function ($data) {
     return "<a class='btn btn-xs btn-primary' href='/rooms/$data->id/edit'>Edit</a> 
