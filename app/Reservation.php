@@ -24,18 +24,14 @@ class Reservation extends Model
         //User::class == 'App\User'
         return $this->belongsTo(User::class);
      }
-    //  public function room()
-    //  {
-    // //     //User::class == 'App\User'
-    //      return $this->belongsTo(Room::class);
-    //  }
+     public function room()
+     {
+    //     //User::class == 'App\User'
+         return $this->belongsTo(Room::class);
+     }
     
 
-public function room()
-{
-    $this->hasOne('App\Room');
 
-}
 
 
 
