@@ -15,7 +15,7 @@ class LastClientReservationController extends Controller
 
     public function index()
     {
-
+   
         return view('client.ShowLastClientReservation');
 
 
@@ -32,7 +32,7 @@ class LastClientReservationController extends Controller
             ->where(['reservations.user_id' => $id])
             ->get();
 
-
+        
        return datatables()::of($rooms)->toJson();
 
 

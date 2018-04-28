@@ -9,6 +9,8 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Storage;
 use Yajra\Datatables\Datatables;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 
 
@@ -35,10 +37,11 @@ class ManagersController extends Controller
    }
    public function getdata()
     {    
-        return Datatables::of(User::query())
-        ->addColumn('action', function($query){
-        $ret =  "<a href='managers/" . $query->id . "/edit' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>";
-         $ret .= "<button type='button' target='".$query->id."'  class='delete btn-xs btn btn-danger' > DELETE </button>";
+        $respe = User::role('manager')->get();
+        return Datatables::of($respe)
+        ->addColumn('action', function($respe){
+        $ret =  "<a href='managers/" . $respe->id . "/edit' class='btn btn-xs btn-primary'><i class='glyphicon glyphicon-edit'></i> Edit</a>";
+         $ret .= "<button type='button' target='".$respe->id."'  class='delete btn-xs btn btn-danger' > DELETE </button>";
             return $ret;
     })->rawcolumns(['action']) ->make(true);
     }
@@ -64,13 +67,6 @@ class ManagersController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        $role = Role::create(['name' => 'manager']);
-        $permission = Permission::create(['name' => 'manager manage his receptionist']);
-        $permission1 = Permission::create(['name' => 'manager manage clients']);
-        $permission2 = Permission::create(['name' => 'manager manage receptionists']);
-        $role->givePermissionTo($permission);
-        $role->givePermissionTo($permission1);
-        $role->givePermissionTo($permission2);
         if($request->file('avatar_image')==null){
         $path='/avatars2/Nophoto.jpg';
         }
@@ -81,7 +77,7 @@ class ManagersController extends Controller
 			$manager=User::create([
 				'name' => $request->name,
 				'email' => $request->email,
-                'password' => $request->password,
+                'password' => bcrypt($request->password),
                 'national_id' => $request->national_id,
                 'avatar_image' => $path,
             ]);
