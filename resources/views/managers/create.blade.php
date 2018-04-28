@@ -15,7 +15,7 @@
 Name :- <input type="text" name="name" placeholder="Enter the Manager name">
 <br>
 <br>
-Email :- <input type="text" name="email" placeholder="Enter the manager email">
+Email :- <input type="email" name="email" placeholder="Enter the manager email">
 <br>
 <br>
 National ID :- <input type="text" name="national_id" placeholder="Enter the manager national id">
