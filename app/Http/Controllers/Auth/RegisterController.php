@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use \Cache;
 
 class RegisterController extends Controller
 {
@@ -41,6 +42,20 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+
+    public function showRegistrationForm()
+    {
+        $countries=countries();
+        Cache::forever('chachedcountry', $countries);
+        $countries=Cache::get( 'chachedcountry' );
+
+        return view('auth.register',compact('countries'));
+
+
+
+
     }
 
     /**

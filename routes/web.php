@@ -20,8 +20,8 @@ Route::get('/' , 'clients\ClientReservationController@index')->name('client.home
 Route::resource('/reservations/rooms', 'clients\ClientReservationController')->except([
     'index'])->middleware('auth','forbid-banned-user');
 
-Route::get('/client/reservations/{id}' , 'clients\LastClientReservation@show')->name('client.reservations');
-Route::get('/client/reservations/' , 'clients\LastClientReservation@index')->name('client.reservations.index');
+Route::get('/client/reservations/{id}' , 'clients\LastClientReservationController@show')->name('client.reservations');
+Route::get('/client/reservations/' , 'clients\LastClientReservationController@index')->name('client.reservations.index');
 
 
 

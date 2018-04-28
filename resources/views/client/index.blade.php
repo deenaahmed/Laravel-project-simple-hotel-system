@@ -20,9 +20,9 @@
         <div class="col-lg-3">
 
             <div class="card my-4">
-                <h5 class="card-header">Side Widget</h5>
+                <h5 class="card-header">Hotel</h5>
                 <div class="card-body">
-                    You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                    Welcome to your hotel
                 </div>
             </div>
     </div>
@@ -67,10 +67,10 @@
 @foreach($rooms as $room)
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <a href="{{route('rooms.show',$room->id)}}"><img class="card-img-top" src="{{'/storage/roomsimages/'.$room->image}}" alt=""></a>
+                <a href="{{route('rooms.edit',$room->id)}} "><img class="card-img-top" src="{{'/storage/roomsimages/'.$room->image}}" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="{{route('rooms.show',$room->id)}}">ROOM Number {{$room->number}}</a>
+                        <a href="{{route('rooms.edit',$room->id)}} ">ROOM Number {{$room->number}}</a>
                     </h4>
 
                     <h5 style="color: green">Capacity {{$room->capacity}}</h5>
