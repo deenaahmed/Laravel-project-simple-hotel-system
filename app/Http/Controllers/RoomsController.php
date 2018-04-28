@@ -48,7 +48,7 @@ public function store(StoreRoomRequest $request){
       'price'=>$request->price,
       'floor_id'=> $request->floor,
       'user_id'=> $request->user,
-      'isavailable'=> '0',
+      'isavailable'=> 'true',
       'image'=> $input['imagename']
          ]);
     return redirect('rooms');
@@ -71,7 +71,6 @@ Room::where('id',$request->id)->update([
   'price'=>$request->price,
   'floor_id'=> $request->floor,
   'user_id'=> $request->user,
-  'isavailable'=> '0',  
   //'image'=> $input['imagename']  
 ]);
 return redirect('rooms');
@@ -79,7 +78,7 @@ return redirect('rooms');
   }
   public function delete($id){
     $room=Room::find($id);
-    if ($room->isavailable=="1"){
+    if ($room->isavailable=="false"){
       return redirect()->back()->with('alert', 'Sorry ! you cant delete this room , it is reserved ');
     }
   Room::destroy($id);
