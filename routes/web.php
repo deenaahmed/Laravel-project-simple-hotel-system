@@ -81,16 +81,13 @@ Route::get('receptionists/{id}/bann','ReceptionistsController@bann')->middleware
 Aya Section 
 */
 ########## Floors Routes ############
-//Route::get('floors','FloorsController@index')->middleware('auth','role:admin|manager','forbid-banned-user');
-//Route::get('floors/getdatatable','FloorsController@getdatatable')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::get('floors','FloorsController@index')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::get('floors/getdatatable','FloorsController@getdatatable')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::get('floors/create','FloorsController@create')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::post('floors','FloorsController@store')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::get('floors/{id}/edit','FloorsController@edit')->middleware('auth','role:admin|manager','forbid-banned-user');
-Route::patch('floors/{id}','FloorsController@update')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::put('floors/{id}','FloorsController@update')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::delete('floors/{id}', 'FloorsController@delete')->middleware('auth','role:admin|manager','forbid-banned-user');
-
-Route::get('floors/getdatatable','FloorsController@getdatatable');
-Route::get('floors','FloorsController@index');
 /*____________________________________
 #### Rooms Routes #################
 */
@@ -99,7 +96,7 @@ Route::get('rooms/getdatatable','RoomsController@getdatatable')->middleware('aut
 Route::get('rooms/create','RoomsController@create')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::post('rooms','RoomsController@store')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::get('rooms/{id}/edit','RoomsController@edit')->middleware('auth','role:admin|manager','forbid-banned-user');
-Route::patch('rooms/{id}','RoomsController@update')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::put('rooms/{id}','RoomsController@update')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::delete('rooms/{id}','RoomsController@delete')->middleware('auth','role:admin|manager','forbid-banned-user');
 
 

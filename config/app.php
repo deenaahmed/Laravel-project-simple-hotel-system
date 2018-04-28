@@ -149,7 +149,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Alfa6661\AutoNumber\AutoNumberServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        // Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         
         /*
          * Package Service Providers...
