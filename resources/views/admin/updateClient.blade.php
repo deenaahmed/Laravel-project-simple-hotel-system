@@ -11,7 +11,7 @@
         </ul>
     </div>
 @endif
-<h2>Add client</h2>
+<h2>Edit  client</h2>
 
 <form method="post" action="{{ '/admin/clients/'.$user->id }}" enctype="multipart/form-data">
 <?php echo method_field('PUT') ?>
@@ -60,6 +60,7 @@ Gender:-
  password: <input id="password" type="password" name="password" required/>
 <br/>
 <br/>
+<img src="{{asset('storage/clients/images/'.$user->avatar_image)}}" width="200" height="200">
 
 <input type="submit" value="Submit" class="btn btn-primary"/>
 </form>

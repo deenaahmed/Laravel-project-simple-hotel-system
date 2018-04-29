@@ -162,10 +162,18 @@ class UsersController extends Controller
 
 
     public function updateClient($id,StoreUserRequest $request){
-        //$post = Post::find($id);
+        if(!$request->file('image')) {
+            $user=User::find($id);
+           $name= $user->avatar_image;
+           
+        }
+        else
+        {
+
        $image = $request->file('image')->store('public/clients/images');
         //dd($image);
          $name = $request->file('image')->hashName();
+        }
 
         User::find($id)->update(['name'=>$request->name,
             'email' => $request->email,
