@@ -118,7 +118,7 @@ Aya Section
 */
 ########## Floors Routes ############
 Route::get('floors','FloorsController@index')->middleware('auth','role:admin|manager','forbid-banned-user');
-Route::get('floors/getdatatable','FloorsController@getdatatable')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::get('floors/getdatatable','FloorsController@getdatatable')->middleware('auth','role:admin|manager','forbid-banned-user')->name('floors.dataTables');
 Route::get('floors/create','FloorsController@create')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::post('floors','FloorsController@store')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::get('floors/{id}/edit','FloorsController@edit')->middleware('auth','role:admin|manager','forbid-banned-user');
@@ -128,7 +128,7 @@ Route::delete('floors/{id}', 'FloorsController@delete')->middleware('auth','role
 #### Rooms Routes #################
 */
 Route::get('rooms','RoomsController@index')->middleware('auth','role:admin|manager','forbid-banned-user');
-Route::get('rooms/getdatatable','RoomsController@getdatatable')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::get('rooms/getdatatable','RoomsController@getdatatable')->middleware('auth','role:admin|manager','forbid-banned-user')->name('rooms.dataTables');
 Route::get('rooms/create','RoomsController@create')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::post('rooms','RoomsController@store')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::get('rooms/{id}/edit','RoomsController@edit')->middleware('auth','role:admin|manager','forbid-banned-user');

@@ -38,7 +38,7 @@
         $('#rooms-table').DataTable({
            processing: true,
            serverSide: true,
-            ajax: 'http://localhost:8000/rooms/getdatatable' ,
+            ajax: '{{route('rooms.dataTables')}}' ,
             data : {'_token' : '{{csrf_token()}}'},
             columns: [
             {data: 'number'},
