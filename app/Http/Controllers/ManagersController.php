@@ -68,12 +68,13 @@ class ManagersController extends Controller
     public function store(StoreUserRequest $request)
     {
         if($request->file('avatar_image')==null){
-        $path='/avatars2/Nophoto.jpg';
+        $path='user-default.png';
         }
         else{
-        $path = Storage::putFile('avatars2', $request->file('avatar_image'));
+        $path = $request->file('avatar_image')->store('public/clients/images');
+        $path=$request->file('avatar_image')->hashName();
         }
-        Storage::setVisibility($path, 'public');
+        //Storage::setVisibility($path, 'public');
 			$manager=User::create([
 				'name' => $request->name,
 				'email' => $request->email,
@@ -132,9 +133,11 @@ class ManagersController extends Controller
         ]);
         }
         else{
-            Storage::delete($managers->photo);
-            $path = Storage::putFile('avatars2', $request->file('avatar_image'));
-             Storage::setVisibility($path, 'public');
+           // Storage::delete($managers->photo);
+            //$path = Storage::putFile('avatars2', $request->file('avatar_image'));
+            // Storage::setVisibility($path, 'public');
+            $path = $request->file('avatar_image')->store('public/clients/images');
+            $path=$request->file('avatar_image')->hashName();
                  $managers->update([
                     'name' => $request->name,
                     'email' => $request->email,
@@ -155,7 +158,7 @@ class ManagersController extends Controller
     public function destroy(Request $request)
     {
         $managers = User::where('id', $request->id)->first();
-        Storage::delete($managers->photo);
+        //Storage::delete($managers->photo);
         $managers->delete();
         return redirect(route('managers.index')); 
     }

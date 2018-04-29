@@ -11,6 +11,7 @@ use Yajra\Datatables\Datatables;
 use Auth;
 use URL;
 
+
 class UsersController extends Controller
 {// receptionist 
     public function home(){
@@ -19,7 +20,8 @@ class UsersController extends Controller
 
     public function getdatatable(){
     header("Access-Control-Allow-Origin: *");
-    $users = User::where('is_approved','=' ,0)->get();
+    
+    $users = User::role('client')->where('is_approved','=' ,0)->get();
     return datatables()->of($users)->addColumn('action', function ($data) {
     return "<a class='btn btn-xs btn-primary' href='/receptionist/$data->id/approve'>Approve</a> 
     <button class='btn btn-xs btn-danger delete '  user='$data->id' id='delete' >Delete </button>
@@ -85,7 +87,7 @@ class UsersController extends Controller
  }
 
 
-    public function approve(StoreUserRequest $request,$id){
+    public function approve(Request $request,$id){
     	//dd( $id);
         $user = User::find($id);
     	 User::find($id)->update(['is_approved' => '1',

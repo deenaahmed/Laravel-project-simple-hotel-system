@@ -22,7 +22,7 @@ public function getdatatable(){
    $rooms =Room::with('floor','user')->get();
     return datatables()->of($rooms)
     ->addColumn('action', function ($data) {
-      if(Auth::user()->id == $data->user_id){
+      if(Auth::user()->id == $data->user_id || Auth::user()->hasRole('admin')){
     return "<a class='btn btn-xs btn-primary' href='/rooms/$data->id/edit'>Edit</a> 
     <button class='btn btn-xs btn-danger delete ' csrf_token() id='delete' room='$data->id'>Delete </a>
     "; }
@@ -69,7 +69,7 @@ public function edit($id){
     ]);
 }
 public function update(UpdateRoomRequest $request){
-  if ($request ->image ==null){
+  if ($requests->image ==null){
     $photo='default_room.jpg';
   }
   else {
@@ -82,7 +82,7 @@ public function update(UpdateRoomRequest $request){
 Room::where('id',$request->id)->update([
   'number' => $request->number,
   'capacity' =>$request->capacity,
-  'price'=>$request->price,
+  'price'=>$request->price*100,
   'floor_id'=> $request->floor,
   'image' => $photo
 ]);

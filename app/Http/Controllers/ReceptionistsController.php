@@ -87,12 +87,13 @@ class ReceptionistsController extends Controller
     public function store(StoreUserRequest $request)
     {
         if($request->file('avatar_image')==null){
-        $path='/avatars2/Nophoto.jpg';
+            $path='user-default.png';
         }
         else{
-        $path = Storage::putFile('avatars2', $request->file('avatar_image'));
+            $path = $request->file('avatar_image')->store('public/clients/images');
+            $path=$request->file('avatar_image')->hashName();
         }
-        Storage::setVisibility($path, 'public');
+       // Storage::setVisibility($path, 'public');
         $user=Auth::user();
 		$receptionist=User::create([
 			'name' => $request->name,
@@ -164,9 +165,11 @@ class ReceptionistsController extends Controller
         ]);
         }
         else{
-            Storage::delete($receps->photo);
-            $path = Storage::putFile('avatars2', $request->file('avatar_image'));
-             Storage::setVisibility($path, 'public');
+          //  Storage::delete($receps->photo);
+           // $path = Storage::putFile('avatars2', $request->file('avatar_image'));
+           //  Storage::setVisibility($path, 'public');
+           $path = $request->file('avatar_image')->store('public/clients/images');
+           $path=$request->file('avatar_image')->hashName();
                  $receps->update([
                     'name' => $request->name,
                     'email' => $request->email,
@@ -187,7 +190,7 @@ class ReceptionistsController extends Controller
     public function destroy(Request $request)
     {
         $receps = User::where('id', $request->id)->first();
-        Storage::delete($receps->photo);
+        //Storage::delete($receps->photo);
         $receps->delete();
         return redirect(route('receptionists.index')); 
     }

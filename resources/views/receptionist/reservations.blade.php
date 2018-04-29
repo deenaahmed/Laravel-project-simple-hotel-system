@@ -32,7 +32,7 @@
             columns: [
             {data: 'id'},
             {data: 'user.name'},
-            {data: 'user.national_id'}, 
+            {data: 'accompanynumber'}, 
             {data: 'room.number'},  
             {data: 'clientpaidprice'},  
             

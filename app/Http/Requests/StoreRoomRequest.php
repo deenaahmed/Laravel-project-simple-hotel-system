@@ -25,7 +25,7 @@ class StoreRoomRequest extends FormRequest
     {
         return [
             'number' => 'required|min:4|unique:rooms',
-            'price'=> 'required|numeric',
+            'price'=> 'required|numeric|min:1|max:10',
             'capacity' => 'integer',
             'image' => 'required'
         ];

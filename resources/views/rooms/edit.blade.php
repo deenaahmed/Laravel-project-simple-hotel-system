@@ -15,7 +15,7 @@
 <div class="col-2"> </div>
 <dic class="col-8">
 
-<form method="post" action="/rooms/{{$room->id}}" > 
+<form method="post" action="/rooms/{{$room->id}}" enctype="multipart/form-data"> 
 
 {{csrf_field()}}
 <input type="hidden" name="_method" value="PUT">

@@ -22,7 +22,7 @@ public function getdatatable(){
   $floors = Floor::with('user')->get();
   return datatables()->of($floors)
   ->addColumn('action', function ($data) {
-    if(Auth::user()->id == $data->user_id){
+    if(Auth::user()->id == $data->user_id  || Auth::user()->hasRole('admin')){
     return "<a class='btn btn-xs btn-primary' href='/floors/$data->id/edit'>Edit</a> 
     <button class='btn btn-xs btn-danger delete '  floor='$data->id' id='delete' >Delete </button>
     ";}

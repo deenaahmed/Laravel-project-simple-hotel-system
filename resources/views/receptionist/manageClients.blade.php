@@ -6,7 +6,7 @@
 
 <h1>Manage Clients</h1>
 
-<button type="button" class="btn btn-success" onclick="window.location.href='/receptionist'"">Home</button>
+<button type="button" class="btn btn-success" onclick="window.location.href='/receptionist'">Home</button>
 <br>
 <br>
 {{csrf_field()}}

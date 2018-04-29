@@ -5,7 +5,6 @@
 
 
 <h1>My Approved Clients</h1>
-<button onclick="location.href='{{ url('/receptionist') }}'">Home</button>
 {{csrf_field()}}
 <input type="hidden" name="_method" value="DELETE">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
