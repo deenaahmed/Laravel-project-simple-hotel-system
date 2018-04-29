@@ -26,7 +26,7 @@
         $('#Lastresvation-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: 'http://localhost:8000/client/reservations/{{Auth::user()->id}}',
+            ajax: 'http://127.0.0.1:8000/client/reservations/{{Auth::user()->id}}',
             data : {'_token' : '{{csrf_token()}}'},
              columns: [
             {data: 'number'},

@@ -32,7 +32,7 @@
 
             <div class="form-group"
             <label for="UserPhone">Phone</label>
-            <input type="text" class="form-control" id="UserPhone" name="phone" value="{{$user->phone}}">
+            <input type="text" class="form-control" id="UserPhone" name="phone" value="{{$user->mobile}}">
 
     </div>
 
@@ -57,10 +57,18 @@
         </select>
 
     </div>
+  
 
     <div class="form-group">
         <label for="UserAvatar">Avatar</label>
         <input type="file" class="form-control" id="UserAvatar" name="avatar" value="{{$user->avatar_image}}">
+
+    </div>
+
+      <div class="form-group">
+  
+        <img src="{{asset('storage/clients/images/'.$user->avatar_image)}}" width="200" height="200">
+
 
     </div>
 

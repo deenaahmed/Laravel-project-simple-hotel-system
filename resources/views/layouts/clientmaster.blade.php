@@ -33,7 +33,7 @@
                     <a class="nav-link" href={{ route('client.reservations.index')}}>My Resrvation</a>
                 </li>
                     <li class="nav-item">
-                        <a class="nav-link" href={{ route('editprofile.edit',[Auth::user()->id])}}>My Profile</a>
+                        <a class="nav-link" href={{ route('editprofile.edit',[Auth::user()->id])}}> Edit My Profile</a>
                     </li>
                     @hasanyrole('manager|admin|receptionist')
                         <li class="nav-item">
@@ -72,15 +72,7 @@
         </div>
     </div>
 </nav>
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+
 
 <script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>

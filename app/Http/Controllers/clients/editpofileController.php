@@ -83,14 +83,15 @@ class editpofileController extends Controller
 
         } else {
             $image=$request->file('avatar')->store('public/clients/images');
+            $image= $request->file('avatar')->hashName();
         }
         User::find($id)->update([
             'name' => $request->name,
             'email' => $request->email,
-            'phone' => $request->phone,
+            'mobile' => $request->phone,
             'gender' => $request->gender,
             'country' => $request->country,
-            'avatar' => $image
+            'avatar_image' => $image
         ]);
         return redirect('/');
 

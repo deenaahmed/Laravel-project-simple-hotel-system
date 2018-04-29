@@ -33,7 +33,7 @@
         $('#users-table').DataTable({
            processing: true,
            serverSide: true,
-            ajax: 'http://localhost:8000/receptionist/manage/getdatatable' ,
+            ajax: 'http://127.0.0.1:8000/receptionist/manage/getdatatable' ,
             data : {'_token' : '{{csrf_token()}}'},
             columns: [
             {data: 'id'},
