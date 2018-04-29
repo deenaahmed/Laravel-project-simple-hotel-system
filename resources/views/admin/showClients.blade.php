@@ -5,7 +5,6 @@
 
 
 <h1>Manage Clients</h1>
-<button type="button" class="btn btn-success" onclick="location.href='{{ url('/home') }}'">Home</button>
 <br />
 <button type="button" class="btn btn-success" onclick="location.href='{{ url('/admin/clients/add') }}'">add client </button>
 {{csrf_field()}}

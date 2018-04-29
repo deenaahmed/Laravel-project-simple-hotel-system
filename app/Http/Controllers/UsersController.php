@@ -10,6 +10,8 @@ use App\User;
 use Yajra\Datatables\Datatables;
 use Auth;
 use URL;
+use App\Http\Requests\UpdateUser;
+use App\Http\Requests\UpdateClient;
 
 
 class UsersController extends Controller
@@ -112,7 +114,7 @@ class UsersController extends Controller
 
     public function getdatatableClients(){
         header("Access-Control-Allow-Origin: *");
-        $users = User::all();
+        $users =User::role('client')->get();
         return datatables()->of($users)->addColumn('action', function ($data) {
         return "<a class='btn btn-xs btn-primary' href='/admin/clients/$data->id/edit'>edit</a> 
         <button class='btn btn-xs btn-danger delete '  user='$data->id' id='delete' >Delete </button>
@@ -161,7 +163,7 @@ class UsersController extends Controller
     }
 
 
-    public function updateClient($id,StoreUserRequest $request){
+    public function updateClient($id,UpdateClient $request){
         if(!$request->file('image')) {
             $user=User::find($id);
            $name= $user->avatar_image;
