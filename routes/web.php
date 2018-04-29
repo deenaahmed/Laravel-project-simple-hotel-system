@@ -18,14 +18,6 @@ Route::get('/', function () {
 });
 
 
- // Route::get('/notify', function () {
- // $user = App\User::first();
- 
- // $user->notify(new NotifyClient("A new user has visited on your application."));
- 
-//    return view('welcome');
- 
-// });
 //*********************************Admin*****
 
 
@@ -90,10 +82,12 @@ Route::get(
     'managers',
     'ManagersController@index'
 )->name('managers.index')->middleware('auth','role:admin','forbid-banned-user');
+
 Route::get(
     'receptionists',
     'ReceptionistsController@index'
 )->name('receptionists.index')->middleware('auth','role:admin|manager|receptionist','forbid-banned-user');
+
 Route::get('admin','Controller@showadmin')->middleware('auth','role:admin|manager|receptionist','forbid-banned-user');
 Route::get('managers/create','ManagersController@create')->middleware('auth','role:admin','forbid-banned-user');
 Route::get('managers/getdata','ManagersController@getdata')->name('managers.data')->middleware('auth','role:admin','forbid-banned-user');
@@ -118,12 +112,14 @@ Aya Section
 */
 ########## Floors Routes ############
 Route::get('floors','FloorsController@index')->middleware('auth','role:admin|manager','forbid-banned-user');
-Route::get('floors/getdatatable','FloorsController@getdatatable')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::get('floors/create','FloorsController@create')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::post('floors','FloorsController@store')->middleware('auth','role:admin|manager','forbid-banned-user');
-Route::get('floors/{id}/edit','FloorsController@edit')->middleware('auth','role:admin|manager','forbid-banned-user');
+Route::get('floors/{id}/edit','FloorsController@edit')->middleware('auth','role:admin|manager','forbid-banned-user')->name('floors.edit');
 Route::put('floors/{id}','FloorsController@update')->middleware('auth','role:admin|manager','forbid-banned-user');
 Route::delete('floors/{id}', 'FloorsController@delete')->middleware('auth','role:admin|manager','forbid-banned-user');
+
+Route::get('floors/getdatatable','FloorsDataTablesController@getdatatable')->middleware('auth','role:admin|manager','forbid-banned-user');
+
 /*____________________________________
 #### Rooms Routes #################
 */

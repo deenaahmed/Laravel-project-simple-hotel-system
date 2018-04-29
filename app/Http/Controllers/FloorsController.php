@@ -17,22 +17,6 @@ class FloorsController extends Controller
     ]);
   }
 
-public function getdatatable(){
-  header("Access-Control-Allow-Origin: *");
-  $floors = Floor::with('user')->get();
-  return datatables()->of($floors)
-  ->addColumn('action', function ($data) {
-    if(Auth::user()->id == $data->user_id){
-    return "<a class='btn btn-xs btn-primary' href='/floors/$data->id/edit'>Edit</a> 
-    <button class='btn btn-xs btn-danger delete '  floor='$data->id' id='delete' >Delete </button>
-    ";}
-    else{
-      return " ";
-      }
-    })
-    ->make(true);
- }
-
 public function create(){
   $users=User::all();
   return view('floors.create');
